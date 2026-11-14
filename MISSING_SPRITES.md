@@ -76,14 +76,16 @@
 | Sprite | Status |
 |---|---|
 | "Main menu" button | ❌ |
-| "New game" button | ❌ |
-| "Continue" button | ❌ (+ a grayed-out version for when there's no save) |
+| "New game" button | ❌ ⚠️ placeholder in the game for now: replace with the drawing |
+| "Continue" button | ❌ (+ a grayed-out version for when there's no save) ⚠️ placeholder in the game for now: replace with the drawing |
 | "Settings" button | ❌ |
-| "Quit game" button | ❌ |
-| Settings wheel (gear icon) | ❌ |
+| "Quit game" button | ❌ ⚠️ placeholder in the game for now: replace with the drawing |
+| Settings wheel (gear icon) | ❌ ⚠️ placeholder in the game for now: replace with the drawing (`sprites/ui/placeholder_settings_wheel.png`) |
 | Player health: 3 hearts | ❌ (a full heart + an empty heart is enough) |
 | Boss health bar | ❌ |
 | Game icon | ✅ `sprites/ui/game_icon.png` |
+
+⚠️ **Placeholders to replace:** the main menu (`scenes/menus/main_menu.tscn`) uses temporary buttons drawn by Godot (`placeholder_menu_theme.tres`) and a temporary gear icon. Once the drawings exist, swap them in (e.g. turn the buttons into `TextureButton`s) and delete the placeholders.
 
 Tip: for buttons, draw a **normal**, **hover** and **pressed** version of each (or one blank
 button + the text drawn separately), so Godot's `TextureButton` can show them reacting.
