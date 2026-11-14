@@ -3,7 +3,7 @@
 Every source drawing has been cut out with a transparent background, split into
 separate parts where that helps animation, and named `lowercase_with_underscores`.
 
-The untouched source drawings are in `asset pack 1 - ORIGINAL BACKUP/`. Godot ignores that folder
+The untouched source drawings are in `source drawings/` at the project root. Godot ignores that folder
 (it contains a `.gdignore` file), and older versions are also in the git history.
 
 ## Ready-made Godot scenes
@@ -11,8 +11,8 @@ The untouched source drawings are in `asset pack 1 - ORIGINAL BACKUP/`. Godot ig
 | Scene | What it is |
 |---|---|
 | `characters/orpheus/orpheus_rig.tscn` | Orpheus assembled from his parts, ready for cut-out animation |
-| `characters/evil_daven/marker/evil_daven_marker.tscn` | the boss Evil Daven, black + red marker version |
-| `characters/evil_daven/color/evil_daven_color.tscn` | the boss Evil Daven, full colour version (same parts and positions) |
+| `characters/evil_daven/evil_daven.tscn` | the boss Evil Daven, assembled from his parts |
+| `characters/old_master/old_master.tscn` | the old master on his cloud, with a `float` animation (autoplays) and a `talk` animation (`TalkPlayer`) |
 | `collectibles/daven_collectible/daven_collectible.tscn` | the Daven collectible assembled from its parts (so it can wiggle or bounce when picked up) |
 | `environment/props/trampoline/trampoline.tscn` | AnimatedSprite2D with an `idle` and a `bounce` animation |
 
@@ -52,9 +52,8 @@ spots. The face position is my best guess, so nudge the parts in the editor if n
 | `mouths/orpheus_mouth_zigzag.png` | zigzag (scared / gritting) |
 
 ### characters/evil_daven
-The boss, redrawn from `Evil daven.png` (in the project root) as separate parts, in two versions
-with identical shapes: `marker/` (black + red marker, painted with a brush sampled from the scanned
-drawings) and `color/` (the painting's colours with a marker-stroke fill).
+The boss, redrawn from `source drawings/Evil daven.png` as separate parts in black + red marker,
+painted with a brush sampled from the scanned drawings.
 | File | Part |
 |---|---|
 | `evil_daven_body` | squircle body |
@@ -65,7 +64,23 @@ drawings) and `color/` (the painting's colours with a marker-stroke fill).
 | `eyebrows/`: `angry` (default), `worried` | |
 | `mouths/`: `frown` (default), `grin`, `teeth`, `open` | |
 
-Redraw him with `python tools/draw_evil_daven.py sprites` (or add `marker` / `color` for one version).
+Redraw him with `python tools/draw_evil_daven.py sprites`.
+
+### characters/old_master
+Cut from `source drawings/old master orpheus.png` along his own lines, so every part keeps the
+original drawing. White is filled in behind the beard, arms, eyes and mouth so nothing shows
+through when they move.
+| File | Part |
+|---|---|
+| `old_master_head`, `old_master_beard` | head (nods around the neck), beard (sways) |
+| `old_master_eyes_closed`, `old_master_mouth` | closed wise eyes, mouth line (swap with Orpheus's eyes and mouths) |
+| `old_master_arms` | crossed arms |
+| `old_master_torso`, `old_master_tail` | body, tail (sways) |
+| `old_master_leg_back`, `old_master_leg_front` | crossed legs |
+| `old_master_cloud` | the cloud he rides (`cloud_1`, filled white) |
+
+To make him talk while giving advice: `$TalkPlayer.play("talk")`, and `$TalkPlayer.stop()` when he's done.
+Recut him with `python tools/cut_old_master.py sprites`.
 
 ### collectibles/daven_collectible
 The little Daven collectible (this is **not** the boss Daven, who isn't drawn yet), cut into
@@ -96,6 +111,9 @@ The storm that rolls in when arriving at the castle and lasts until Daven is bea
 - `thunder/`: `thunder_1`, `thunder_2` (the small zigzag bolts)
 - `rain/`: 6 raindrop shapes
 
+### classroom
+- `classroom_background.png`: the classroom picture used behind everything by the board camera (temporary picture)
+
 ### ui
 - `game_icon.png`
 
@@ -106,6 +124,6 @@ light. Parts of the same character share the same scale, so they still line up. 
 
 ## Re-cutting
 `tools/cut_sprites.py` and `tools/build_rigs.py` regenerate everything:
-`python tools/cut_sprites.py "asset pack 1 - ORIGINAL BACKUP" sprites`, then
+`python tools/cut_sprites.py "source drawings/asset pack 1" sprites`, then
 `python tools/build_rigs.py sprites/parts.json sprites`.
 Some of the cuts use coordinates measured on these exact drawings, so new drawings need new cut rules.

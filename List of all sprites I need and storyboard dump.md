@@ -3,7 +3,7 @@ Game intro, POV from a person in class, looking at a whiteboard, he's eyes are a
 
 Stage 1 : Cutscene : Orpheus is living happily in his village, then evil daven comes in and throws fireballs everywhere on his village and kills everybody but him, his village is destroyed, and he swears to avenge his peers.
 
-Stage 2 : Training : Level to introduce all abilities one by one, and then a simple boss fight against a scarecrow (when the scarecrow is beaten, the player gets a key), the old master rides on a cloud in the sky and give tips, at the end the player is gifted the old masters magic wand, that throws fire and ice balls.
+Stage 2 : Training : Level to introduce all abilities one by one, and then a simple boss fight against a scarecrow (when the scarecrow is beaten, the player gets a key), the old master rides on a cloud in the sky, following his disciple and giving tips, at the end the player is gifted the old masters magic wand, that throws fire and ice balls.
 abilities : jump, double jump with the boots found in the mystery cube, dash, fire and alt fire with the wand,
 
 Stage 3 : travel to his castle : One or two scenes of travel, with simple traps and bad guys

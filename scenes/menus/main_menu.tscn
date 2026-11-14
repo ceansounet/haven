@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/common/board_camera.tscn" id="1"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="BoardCamera" parent="." instance=ExtResource("1")]
+view = 0

@@ -1,0 +1,108 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://sprites/characters/old_master/old_master_torso.png" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/characters/old_master/old_master_tail.png" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/characters/old_master/old_master_head.png" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/characters/old_master/old_master_eyes_closed.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/characters/old_master/old_master_mouth.png" id="5"]
+[ext_resource type="Texture2D" path="res://sprites/characters/old_master/old_master_beard.png" id="6"]
+[ext_resource type="Texture2D" path="res://sprites/characters/old_master/old_master_arms.png" id="7"]
+[ext_resource type="Texture2D" path="res://sprites/characters/old_master/old_master_leg_back.png" id="8"]
+[ext_resource type="Texture2D" path="res://sprites/characters/old_master/old_master_leg_front.png" id="9"]
+[ext_resource type="Texture2D" path="res://sprites/characters/old_master/old_master_cloud.png" id="10"]
+[ext_resource type="Texture2D" path="res://sprites/characters/orpheus/mouths/orpheus_mouth_open.png" id="11"]
+
+[sub_resource type="Animation" id="Animation_float"]
+resource_name = "float"
+length = 2.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Float:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {"times": PackedFloat32Array(0, 1.2, 2.4), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Float/Body/Tail:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {"times": PackedFloat32Array(0, 1.2, 2.4), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [0.0, 0.12, 0.0]}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Float/Body/Head/Beard:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {"times": PackedFloat32Array(0, 1.2, 2.4), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [0.0, -0.06, 0.0]}
+
+[sub_resource type="Animation" id="Animation_talk"]
+resource_name = "talk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Float/Body/Head/Mouth:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {"times": PackedFloat32Array(0, 0.2), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [ExtResource("11"), ExtResource("5")]}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_float"]
+_data = {&"float": SubResource("Animation_float")}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_talk"]
+_data = {&"talk": SubResource("Animation_talk")}
+
+[node name="OldMaster" type="Node2D"]
+
+[node name="Float" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="Float"]
+position = Vector2(10.0, -185.0)
+texture = ExtResource("1")
+offset = Vector2(0.0, -66.0)
+
+[node name="Tail" type="Sprite2D" parent="Float/Body"]
+position = Vector2(-72.0, -43.0)
+texture = ExtResource("2")
+offset = Vector2(-23.0, -28.5)
+show_behind_parent = true
+
+[node name="Head" type="Sprite2D" parent="Float/Body"]
+position = Vector2(-7.0, -139.0)
+texture = ExtResource("3")
+offset = Vector2(7.0, -86.0)
+
+[node name="Eyes" type="Sprite2D" parent="Float/Body/Head"]
+position = Vector2(10.0, -137.0)
+texture = ExtResource("4")
+
+[node name="Mouth" type="Sprite2D" parent="Float/Body/Head"]
+position = Vector2(28.5, -98.0)
+texture = ExtResource("5")
+
+[node name="Beard" type="Sprite2D" parent="Float/Body/Head"]
+position = Vector2(27.0, -76.0)
+texture = ExtResource("6")
+offset = Vector2(4.0, 31.0)
+
+[node name="Arms" type="Sprite2D" parent="Float/Body"]
+position = Vector2(3.0, -121.0)
+texture = ExtResource("7")
+offset = Vector2(-1.0, 2.5)
+
+[node name="LegBack" type="Sprite2D" parent="Float/Body"]
+position = Vector2(-47.0, -17.0)
+texture = ExtResource("8")
+offset = Vector2(12.5, 40.5)
+
+[node name="LegFront" type="Sprite2D" parent="Float/Body"]
+position = Vector2(28.0, 0.0)
+texture = ExtResource("9")
+offset = Vector2(6.0, 35.5)
+
+[node name="Cloud" type="Sprite2D" parent="Float"]
+position = Vector2(0.0, -70.0)
+texture = ExtResource("10")
+
+[node name="FloatPlayer" type="AnimationPlayer" parent="."]
+libraries = {&"": SubResource("AnimationLibrary_float")}
+autoplay = &"float"
+
+[node name="TalkPlayer" type="AnimationPlayer" parent="."]
+libraries = {&"": SubResource("AnimationLibrary_talk")}

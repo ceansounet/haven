@@ -1,12 +1,11 @@
 """Redraw the boss Evil Daven (from 'Evil daven.png') in the marker style of the other sprites,
 as separate parts, and build an animatable Godot rig for him.
 
-Two versions with the exact same shapes:
-  marker/  black + red marker only, white fill (like Orpheus)
-  color/   the painting's colours, filled with marker-brush strokes
+Black + red marker only, white fill (like Orpheus), painted with a brush sampled from the
+scanned drawings (see marker_brush.py).
 
 Usage: python tools/draw_evil_daven.py sprites
-Output: sprites/characters/evil_daven/<version>/*.png + evil_daven_<version>.tscn
+Output: sprites/characters/evil_daven/*.png + evil_daven.tscn
 """
 import math
 import sys
@@ -37,11 +36,6 @@ STYLES = {
         spikes_back=WHITE, spikes_front=WHITE, skin=WHITE, eye=WHITE,
         ear_inner=None, ear_inner_line=RED, cheek=None, cheek_line=RED,
         vein=RED, pupil=INK, mouth=INK, textured=False, brush=True),
-    "color": dict(
-        outline=INK, spikes_back_line=INK, spikes_front_line=INK,
-        spikes_back=rgb(150, 74, 48), spikes_front=rgb(178, 94, 62), skin=rgb(244, 168, 138), eye=WHITE,
-        ear_inner=rgb(230, 136, 128), ear_inner_line=None, cheek=rgb(236, 128, 124), cheek_line=None,
-        vein=rgb(222, 92, 92), pupil=rgb(84, 32, 24), mouth=rgb(92, 34, 26), textured=True, brush=False),
 }
 
 
@@ -70,7 +64,7 @@ rng = np.random.default_rng(7)
 _sel = smooth_noise(_g, 160)
 SELECT = (np.argsort(np.argsort(_sel.ravel())).reshape(_sel.shape) / _sel.size).astype(np.float32)
 del _sel
-SCANS = Path(__file__).parent.parent / "asset pack 1 - ORIGINAL BACKUP"
+SCANS = Path(__file__).parent.parent / "source drawings" / "asset pack 1"
 _brushes = {}
 
 
@@ -182,7 +176,7 @@ def draw(version):
     global rng
     rng = np.random.default_rng(7)  # same shapes for every version
     st = STYLES[version]
-    out_dir = ROOT / version
+    out_dir = ROOT
     meta = {}
 
     class Layer:
@@ -340,7 +334,7 @@ def draw(version):
 
 # ----------------------------------------------------------------- Godot rig
 def write_rig(version, meta):
-    rel = f"characters/evil_daven/{version}/"
+    rel = "characters/evil_daven/"
     behind = ["show_behind_parent = true"]
     nodes = [  # name, parent, sprite (None = empty Node2D), pivot override, extra properties
         ("FootLeft", ".", "evil_daven_foot_left", None, []),
@@ -366,7 +360,7 @@ def write_rig(version, meta):
     lines = ["[gd_scene format=3]", ""]
     for i, t in enumerate(tex, 1):
         lines.append(f'[ext_resource type="Texture2D" path="res://sprites/{rel}{t}.png" id="{i}"]')
-    lines += ["", f'[node name="EvilDaven{version.title()}" type="Node2D"]', ""]
+    lines += ["", '[node name="EvilDaven" type="Node2D"]', ""]
     piv = {".": (500, 1070)}  # between the feet, on the ground
     for name, parent, sprite, override, props in nodes:
         p = override or meta[sprite]["pivot"]
@@ -380,9 +374,8 @@ def write_rig(version, meta):
             if abs(c[0] - p[0]) > 0.05 or abs(c[1] - p[1]) > 0.05:
                 lines.append(f"offset = Vector2({c[0] - p[0]:.1f}, {c[1] - p[1]:.1f})")
         lines += props + [""]
-    (ROOT / version / f"evil_daven_{version}.tscn").write_text("\n".join(lines), encoding="utf-8", newline="\n")
-    print("wrote", f"evil_daven_{version}.tscn")
+    (ROOT / "evil_daven.tscn").write_text("\n".join(lines), encoding="utf-8", newline="\n")
+    print("wrote evil_daven.tscn")
 
 
-for v in (sys.argv[2:] or STYLES):
-    draw(v)
+draw("marker")

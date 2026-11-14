@@ -6,9 +6,9 @@
 | Sprite | Status |
 |---|---|
 | Orpheus | ✅ body, arms, legs, tail, 5 eye/eyebrow sets (incl. teary), 6 mouths |
-| Boss evil Daven | ✅ redrawn from `Evil daven.png` in two versions (black + red marker, and full colour), with arms, feet, spikes, pupils, 4 mouths and 2 eyebrow sets |
+| Boss evil Daven | ✅ redrawn from `Evil daven.png` in black + red marker, with arms, feet, spikes, pupils, 4 mouths and 2 eyebrow sets |
 | Daven collectible | ✅ body, spikes, arms, feet, eyes, cheeks, mouth |
-| Old master | ❌ (storyboard idea: Orpheus with a long beard, so a **beard** piece + maybe a hat/robe on top of the Orpheus rig) |
+| Old master | ✅ old Orpheus with a beard, sitting cross-legged on his cloud (tail, head, beard, arms, legs, eyes, mouth) |
 | Tree | ✅ |
 | Trampoline | ✅ 5 animation frames |
 | Blocks | ✅ plain, brick, cracked, mystery |
@@ -31,8 +31,8 @@
 ## Stage 2: training
 | Sprite | Status |
 |---|---|
-| Old master | ❌ (see the top of this list) |
-| Master's cloud | ♻️ `cloud_1..3` |
+| Old master | ✅ |
+| Master's cloud | ✅ part of the old master scene |
 | Scarecrow (boss) | ❌ |
 | Key (reward for beating the scarecrow) | ✅ |
 | Mystery cube | ✅ `block_mystery` |
