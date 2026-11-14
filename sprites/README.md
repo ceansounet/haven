@@ -11,6 +11,8 @@ The untouched source drawings are in `asset pack 1 - ORIGINAL BACKUP/`. Godot ig
 | Scene | What it is |
 |---|---|
 | `characters/orpheus/orpheus_rig.tscn` | Orpheus assembled from his parts, ready for cut-out animation |
+| `characters/evil_daven/marker/evil_daven_marker.tscn` | the boss Evil Daven, black + red marker version |
+| `characters/evil_daven/color/evil_daven_color.tscn` | the boss Evil Daven, full colour version (same parts and positions) |
 | `collectibles/daven_collectible/daven_collectible.tscn` | the Daven collectible assembled from its parts (so it can wiggle or bounce when picked up) |
 | `environment/props/trampoline/trampoline.tscn` | AnimatedSprite2D with an `idle` and a `bounce` animation |
 
@@ -48,6 +50,22 @@ spots. The face position is my best guess, so nudge the parts in the editor if n
 | `mouths/orpheus_mouth_open.png` | `v` open mouth |
 | `mouths/orpheus_mouth_wobbly.png` | wobbly smile |
 | `mouths/orpheus_mouth_zigzag.png` | zigzag (scared / gritting) |
+
+### characters/evil_daven
+The boss, redrawn from `Evil daven.png` (in the project root) as separate parts, in two versions
+with identical shapes: `marker/` (black + red marker, painted with a brush sampled from the scanned
+drawings) and `color/` (the painting's colours with a marker-stroke fill).
+| File | Part |
+|---|---|
+| `evil_daven_body` | squircle body |
+| `evil_daven_spikes_back`, `evil_daven_spikes_front` | the two layers of spikes |
+| `evil_daven_ear_left` / `_right`, `evil_daven_arm_left` / `_right`, `evil_daven_foot_left` / `_right` | ears, arms (rotate at the shoulder), feet (rotate at the hip) |
+| `evil_daven_eye_left` / `_right`, `evil_daven_pupil_left` / `_right` | bloodshot eyes, pupils (move them to make him look around) |
+| `evil_daven_cheek_left` / `_right` | blush |
+| `eyebrows/`: `angry` (default), `worried` | |
+| `mouths/`: `frown` (default), `grin`, `teeth`, `open` | |
+
+Redraw him with `python tools/draw_evil_daven.py sprites` (or add `marker` / `color` for one version).
 
 ### collectibles/daven_collectible
 The little Daven collectible (this is **not** the boss Daven, who isn't drawn yet), cut into

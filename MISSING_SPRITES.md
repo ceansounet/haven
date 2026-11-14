@@ -6,7 +6,7 @@
 | Sprite | Status |
 |---|---|
 | Orpheus | ✅ body, arms, legs, tail, 5 eye/eyebrow sets (incl. teary), 6 mouths |
-| **Boss evil Daven** | ❌ **not drawn**: needed in stage 1 (throwing fireballs on the village) and stage 4 (rising from the ground, lava, robots, then small and running around). Drawing him in separate parts like Orpheus (body, arms, legs, face) makes all of that animatable from one drawing |
+| Boss evil Daven | ✅ redrawn from `Evil daven.png` in two versions (black + red marker, and full colour), with arms, feet, spikes, pupils, 4 mouths and 2 eyebrow sets |
 | Daven collectible | ✅ body, spikes, arms, feet, eyes, cheeks, mouth |
 | Old master | ❌ (storyboard idea: Orpheus with a long beard, so a **beard** piece + maybe a hat/robe on top of the Orpheus rig) |
 | Tree | ✅ |
@@ -56,13 +56,13 @@
 | Sprite | Status |
 |---|---|
 | Castle arena (inside walls / background) | ❌ (floor ♻️ blocks) |
-| Boss Daven | ❌ (see the top of this list) |
+| Boss Daven | ✅ |
 | Daven rising from the ground (cracks / dust) | ❌ |
 | Daven's fireballs | ✅ |
 | Lava (rising) | ❌ |
 | Robots | ❌ |
 | Frozen robot / ice block effect | ❌ |
-| Small Daven running, arms flailing | ❌ needs the boss Daven drawing (then ♻️ his rig scaled down) |
+| Small Daven running, arms flailing | ♻️ the Evil Daven rig scaled down, arms and feet animated |
 | Speech bubbles ("waaaa", "what's that, I didn't sign for this!") | ❌ |
 | Orpheus closed eyes | ❌ |
 | Floating aura around Orpheus | ❌ |
