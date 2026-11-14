@@ -1,5 +1,8 @@
 Player :
 -
 Boss :
+-
 environement :
+-
 projectiles :
+-
