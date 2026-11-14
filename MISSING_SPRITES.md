@@ -2,6 +2,16 @@
 
 ✅ = already drawn (see `sprites/README.md`)  ·  ❌ = still to draw  ·  ♻️ = can probably reuse an existing sprite
 
+## Game intro (classroom → whiteboard menu)
+| Sprite | Status |
+|---|---|
+| Classroom seen from a student's desk (POV) | ❌ |
+| Whiteboard (empty frame) | ❌ |
+| Math written on the board (before it changes) | ❌ |
+| Desk + the student's arms (for putting the head down) | ❌ |
+| Eyelids closing / blink overlay (top and bottom black shapes) | ❌ |
+| Menu drawn on the whiteboard | ❌ see **Menus and UI** below |
+
 ## From the storyboard's sprite list
 | Sprite | Status |
 |---|---|
@@ -79,7 +89,7 @@
 |---|---|
 | Main menu (background / title screen) | ❌ |
 | "New game" button | ❌ |
-| "Continue" button | ❌ |
+| "Continue" button | ❌ (+ a grayed-out version for when there's no save) |
 | "Settings" button | ❌ |
 | "Quit game" button | ❌ |
 | Settings screen (panel / background) | ❌ |
