@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brp27q1cpgs7e"
-path="res://.godot/imported/orpheus_hand_2.png-12e748ef44b0e3e49ea04c51fca49504.ctex"
+uid="uid://dwhmid8mqhoet"
+path="res://.godot/imported/daven_collectible_eye_right.png-42a4093fd5ec9003e8dc12d1089e29bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/characters/orpheus/orpheus_hand_2.png"
-dest_files=["res://.godot/imported/orpheus_hand_2.png-12e748ef44b0e3e49ea04c51fca49504.ctex"]
+source_file="res://sprites/collectibles/daven_collectible/daven_collectible_eye_right.png"
+dest_files=["res://.godot/imported/daven_collectible_eye_right.png-42a4093fd5ec9003e8dc12d1089e29bf.ctex"]
 
 [params]
 

@@ -121,15 +121,14 @@ save(img, c[2], O + "orpheus_body.png", s, pivot=(170, 340))
 save(img, c[4], O + "orpheus_arm_raised.png", s, pivot=(255, 115))
 save(img, c[12], O + "orpheus_arm_down.png", s, pivot=(280, 155))
 save(img, c[16], O + "orpheus_tail.png", s, pivot=(66, 285))
-save(img, c[17], O + "orpheus_hand_1.png", s, pivot=(278, 292))
-save(img, c[18], O + "orpheus_hand_2.png", s, pivot=(307, 292))
+save(img, c[17] | c[18], O + "eyes/orpheus_eyes_weird.png", s)
 save(img, c[19], O + "orpheus_leg_back.png", s, pivot=(80, 350))
 save(img, c[20], O + "orpheus_leg_front.png", s, pivot=(235, 376))
 
-# ---------------------------------------------------------------- Daven
+# ---------------------------------------------------------------- Daven (collectible)
 img, ink, s = load("daven.jpg")
 c = components(ink, 2, 0.00003)
-D = "characters/daven/"
+D = "collectibles/daven_collectible/"
 P = 4032 / 1400  # analyze preview -> original pixels
 shape = ink.shape
 arm_l = c[0] & box(shape, 140 * P, 622 * P, 233 * P, 714 * P)
@@ -138,17 +137,17 @@ body_from_c0 = c[0] & box(shape, 222 * P, 600 * P, 9999, 9999) & ~arm_l & ~foot_
 arm_r = c[2] & box(shape, 800 * P, 0, 9999, 712 * P)
 spikes = (c[0] & ~arm_l & ~foot_l & ~body_from_c0) | c[1] | c[3]
 body = (c[2] & ~arm_r) | body_from_c0
-save(img, spikes, D + "daven_spikes.png", s, pivot=(1500, 2700))
-save(img, body, D + "daven_body.png", s, pivot=(1500, 2700))
-save(img, arm_l, D + "daven_arm_left.png", s, pivot=(660, 1960))
-save(img, arm_r, D + "daven_arm_right.png", s, pivot=(2310, 1980))
-save(img, foot_l, D + "daven_foot_left.png", s, pivot=(800, 2700))
-save(img, c[11], D + "daven_foot_right.png", s, pivot=(1950, 2740))
-save(img, c[5], D + "daven_eye_left.png", s)
-save(img, c[4], D + "daven_eye_right.png", s)
-save(img, c[7] | c[9] | c[10], D + "daven_cheek_left.png", s)
-save(img, c[6], D + "daven_cheek_right.png", s)
-save(img, c[8], D + "daven_mouth.png", s)
+save(img, spikes, D + "daven_collectible_spikes.png", s, pivot=(1500, 2700))
+save(img, body, D + "daven_collectible_body.png", s, pivot=(1500, 2700))
+save(img, arm_l, D + "daven_collectible_arm_left.png", s, pivot=(660, 1960))
+save(img, arm_r, D + "daven_collectible_arm_right.png", s, pivot=(2310, 1980))
+save(img, foot_l, D + "daven_collectible_foot_left.png", s, pivot=(800, 2700))
+save(img, c[11], D + "daven_collectible_foot_right.png", s, pivot=(1950, 2740))
+save(img, c[5], D + "daven_collectible_eye_left.png", s)
+save(img, c[4], D + "daven_collectible_eye_right.png", s)
+save(img, c[7] | c[9] | c[10], D + "daven_collectible_cheek_left.png", s)
+save(img, c[6], D + "daven_collectible_cheek_right.png", s)
+save(img, c[8], D + "daven_collectible_mouth.png", s)
 
 # ---------------------------------------------------------------- environment sheet
 img, ink, s = load("environment.jpg")

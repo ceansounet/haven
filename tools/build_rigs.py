@@ -54,8 +54,6 @@ scene(O + "orpheus_rig.tscn", (170, 494), [
     ("Body", ".", O + "orpheus_body.png", None, []),
     ("Tail", "Body", O + "orpheus_tail.png", None, behind),
     ("ArmDown", "Body", O + "orpheus_arm_down.png", None, []),
-    ("Hand1", "Body", O + "orpheus_hand_1.png", None, []),
-    ("Hand2", "Body", O + "orpheus_hand_2.png", None, []),
     ("ArmRaised", "Body", O + "orpheus_arm_raised.png", None, []),
     ("Face", "Body", None, (180, 70), []),
     ("Eyebrows", "Body/Face", O + "eyes/orpheus_eyebrows_worried.png", (172, 34), hidden),
@@ -63,22 +61,22 @@ scene(O + "orpheus_rig.tscn", (170, 494), [
     ("Mouth", "Body/Face", O + "mouths/orpheus_mouth_smile.png", (200, 96), []),
 ])
 
-# ---------------- Daven (drawn in one piece, so every part is already in place)
-D = "characters/daven/"
-d = meta[D + "daven_body.png"]
-scene(D + "daven_rig.tscn", (d["pivot"][0], d["pivot"][1] + 60), [
-    ("Body", ".", D + "daven_body.png", None, []),
-    ("Spikes", "Body", D + "daven_spikes.png", None, behind),
-    ("ArmLeft", "Body", D + "daven_arm_left.png", None, []),
-    ("ArmRight", "Body", D + "daven_arm_right.png", None, []),
-    ("FootLeft", "Body", D + "daven_foot_left.png", None, []),
-    ("FootRight", "Body", D + "daven_foot_right.png", None, []),
-    ("Face", "Body", None, meta[D + "daven_mouth.png"]["center"], []),
-    ("EyeLeft", "Body/Face", D + "daven_eye_left.png", None, []),
-    ("EyeRight", "Body/Face", D + "daven_eye_right.png", None, []),
-    ("CheekLeft", "Body/Face", D + "daven_cheek_left.png", None, []),
-    ("CheekRight", "Body/Face", D + "daven_cheek_right.png", None, []),
-    ("Mouth", "Body/Face", D + "daven_mouth.png", None, []),
+# ---------------- Daven collectible (drawn in one piece, so every part is already in place)
+D = "collectibles/daven_collectible/"
+d = meta[D + "daven_collectible_body.png"]
+scene(D + "daven_collectible.tscn", (d["pivot"][0], d["pivot"][1] + 60), [
+    ("Body", ".", D + "daven_collectible_body.png", None, []),
+    ("Spikes", "Body", D + "daven_collectible_spikes.png", None, behind),
+    ("ArmLeft", "Body", D + "daven_collectible_arm_left.png", None, []),
+    ("ArmRight", "Body", D + "daven_collectible_arm_right.png", None, []),
+    ("FootLeft", "Body", D + "daven_collectible_foot_left.png", None, []),
+    ("FootRight", "Body", D + "daven_collectible_foot_right.png", None, []),
+    ("Face", "Body", None, meta[D + "daven_collectible_mouth.png"]["center"], []),
+    ("EyeLeft", "Body/Face", D + "daven_collectible_eye_left.png", None, []),
+    ("EyeRight", "Body/Face", D + "daven_collectible_eye_right.png", None, []),
+    ("CheekLeft", "Body/Face", D + "daven_collectible_cheek_left.png", None, []),
+    ("CheekRight", "Body/Face", D + "daven_collectible_cheek_right.png", None, []),
+    ("Mouth", "Body/Face", D + "daven_collectible_mouth.png", None, []),
 ])
 
 # ---------------- Trampoline bounce animation

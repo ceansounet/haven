@@ -12,7 +12,7 @@ The untouched source drawings are kept in two places:
 | Scene | What it is |
 |---|---|
 | `characters/orpheus/orpheus_rig.tscn` | Orpheus assembled from his parts, ready for cut-out animation |
-| `characters/daven/daven_rig.tscn` | Evil Daven assembled from his parts |
+| `collectibles/daven_collectible/daven_collectible.tscn` | the Daven collectible assembled from its parts (so it can wiggle or bounce when picked up) |
 | `environment/props/trampoline/trampoline.tscn` | AnimatedSprite2D with an `idle` and a `bounce` animation |
 
 ### How to animate a rig
@@ -24,7 +24,7 @@ The untouched source drawings are kept in two places:
    `Face/Eyebrows` and drop in a sprite from `eyes/` or `mouths/`.
 
 Parent/child links: the arms, tail and face follow the **Body**, so moving the body moves
-them too. The tail and Daven's spikes have `show_behind_parent` on, so they draw behind the body.
+them too. The tail and the collectible's spikes have `show_behind_parent` on, so they draw behind the body.
 
 The Orpheus parts were laid out on the sheet roughly where they belong, and the rig keeps those
 spots. The face position is my best guess, so nudge the parts in the editor if needed.
@@ -38,8 +38,8 @@ spots. The face position is my best guess, so nudge the parts in the editor if n
 | `orpheus_arm_raised.png`, `orpheus_arm_down.png` | the two arms |
 | `orpheus_leg_back.png`, `orpheus_leg_front.png` | legs |
 | `orpheus_tail.png` | tail |
-| `orpheus_hand_1.png`, `orpheus_hand_2.png` | the two small "P"-shaped pieces from the sheet (I guessed they are hands/claws; rename them if not) |
 | `eyes/orpheus_eyes_happy.png` | `^ ^` |
+| `eyes/orpheus_eyes_weird.png` | the two small "P"-shaped weird eyes |
 | `eyes/orpheus_eyes_wavy.png` | `~ ~` |
 | `eyes/orpheus_eyebrows_angry.png` | `\ /` |
 | `eyes/orpheus_eyebrows_worried.png` | `/ \` |
@@ -50,9 +50,11 @@ spots. The face position is my best guess, so nudge the parts in the editor if n
 | `mouths/orpheus_mouth_wobbly.png` | wobbly smile |
 | `mouths/orpheus_mouth_zigzag.png` | zigzag (scared / gritting) |
 
-### characters/daven
-`daven_body`, `daven_spikes`, `daven_arm_left` / `_right`, `daven_foot_left` / `_right`,
-`daven_eye_left` / `_right`, `daven_cheek_left` / `_right`, `daven_mouth`.
+### collectibles/daven_collectible
+The little Daven collectible (this is **not** the boss Daven, who isn't drawn yet), cut into
+`daven_collectible_body`, `_spikes`, `_arm_left` / `_right`, `_foot_left` / `_right`,
+`_eye_left` / `_right`, `_cheek_left` / `_right`, `_mouth`.
+Its body is outline only (no white fill), so the background shows through it.
 
 ### environment
 - `blocks/`: `block_plain`, `block_brick`, `block_cracked`, `block_mystery` (the `?` cube)

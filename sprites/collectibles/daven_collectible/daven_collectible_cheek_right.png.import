@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwvpjh3qyv0be"
-path="res://.godot/imported/daven_cheek_right.png-fe72b92eee01359ff8c327b8bf43c36f.ctex"
+uid="uid://dbruvvs8xuw63"
+path="res://.godot/imported/daven_collectible_cheek_right.png-4d3e6582f89e89548b593e312aa1d74c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/characters/daven/daven_cheek_right.png"
-dest_files=["res://.godot/imported/daven_cheek_right.png-fe72b92eee01359ff8c327b8bf43c36f.ctex"]
+source_file="res://sprites/collectibles/daven_collectible/daven_collectible_cheek_right.png"
+dest_files=["res://.godot/imported/daven_collectible_cheek_right.png-4d3e6582f89e89548b593e312aa1d74c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuogb75khi84l"
-path="res://.godot/imported/orpheus_hand_1.png-7135e080e1d05d67b7e2f01f925385dc.ctex"
+uid="uid://d3kw2x5qrl1km"
+path="res://.godot/imported/orpheus_eyes_weird.png-a8bcc6362a8441c95140ccc7d45d4d5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/characters/orpheus/orpheus_hand_1.png"
-dest_files=["res://.godot/imported/orpheus_hand_1.png-7135e080e1d05d67b7e2f01f925385dc.ctex"]
+source_file="res://sprites/characters/orpheus/eyes/orpheus_eyes_weird.png"
+dest_files=["res://.godot/imported/orpheus_eyes_weird.png-a8bcc6362a8441c95140ccc7d45d4d5f.ctex"]
 
 [params]
 
