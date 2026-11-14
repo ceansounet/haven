@@ -1,0 +1,85 @@
+# Haven sprites
+
+Every drawing from `asset pack 1/` has been cut out with a transparent background, split into
+separate parts where that helps animation, and named `lowercase_with_underscores`.
+
+The untouched source drawings are kept in two places:
+- `asset pack 1/` (still used as the source)
+- `asset pack 1 - ORIGINAL BACKUP/`, a safety copy that Godot ignores (it contains a `.gdignore` file)
+
+## Ready-made Godot scenes
+
+| Scene | What it is |
+|---|---|
+| `characters/orpheus/orpheus_rig.tscn` | Orpheus assembled from his parts, ready for cut-out animation |
+| `characters/daven/daven_rig.tscn` | Evil Daven assembled from his parts |
+| `environment/props/trampoline/trampoline.tscn` | AnimatedSprite2D with an `idle` and a `bounce` animation |
+
+### How to animate a rig
+1. Open the rig scene (or drag it into your level).
+2. Add an **AnimationPlayer** under the root node.
+3. Key the `rotation`, `position` or `scale` of the parts. Each part already rotates around its joint:
+   arms around the shoulder, legs around the hip and the tail around its base.
+4. To change an expression, key the `texture` property of `Face/Eyes`, `Face/Mouth` or
+   `Face/Eyebrows` and drop in a sprite from `eyes/` or `mouths/`.
+
+Parent/child links: the arms, tail and face follow the **Body**, so moving the body moves
+them too. The tail and Daven's spikes have `show_behind_parent` on, so they draw behind the body.
+
+The Orpheus parts were laid out on the sheet roughly where they belong, and the rig keeps those
+spots. The face position is my best guess, so nudge the parts in the editor if needed.
+
+## What's where
+
+### characters/orpheus
+| File | Part |
+|---|---|
+| `orpheus_body.png` | head + torso (white-filled) |
+| `orpheus_arm_raised.png`, `orpheus_arm_down.png` | the two arms |
+| `orpheus_leg_back.png`, `orpheus_leg_front.png` | legs |
+| `orpheus_tail.png` | tail |
+| `orpheus_hand_1.png`, `orpheus_hand_2.png` | the two small "P"-shaped pieces from the sheet (I guessed they are hands/claws; rename them if not) |
+| `eyes/orpheus_eyes_happy.png` | `^ ^` |
+| `eyes/orpheus_eyes_wavy.png` | `~ ~` |
+| `eyes/orpheus_eyebrows_angry.png` | `\ /` |
+| `eyes/orpheus_eyebrows_worried.png` | `/ \` |
+| `mouths/orpheus_mouth_smile.png` | smile |
+| `mouths/orpheus_mouth_frown.png` | frown |
+| `mouths/orpheus_mouth_flat.png` | straight line |
+| `mouths/orpheus_mouth_open.png` | `v` open mouth |
+| `mouths/orpheus_mouth_wobbly.png` | wobbly smile |
+| `mouths/orpheus_mouth_zigzag.png` | zigzag (scared / gritting) |
+
+### characters/daven
+`daven_body`, `daven_spikes`, `daven_arm_left` / `_right`, `daven_foot_left` / `_right`,
+`daven_eye_left` / `_right`, `daven_cheek_left` / `_right`, `daven_mouth`.
+
+### environment
+- `blocks/`: `block_plain`, `block_brick`, `block_cracked`, `block_mystery` (the `?` cube)
+- `items/`: `wand`, `key`
+- `buildings/house.png`
+- `castle/`: `castle_tower`, `castle_center_wall` (wall with arch), `castle_gate_portcullis` (the grid)
+- `props/fence_gate.png`
+- `props/tree/`: `tree_full`, plus `tree_trunk` + `tree_foliage` (so the leaves can sway)
+- `props/trampoline/`: 5 frames on the same canvas size with the feet aligned
+  (`1_stretched_high` → `5_squashed_deep`)
+- `background/`: `cloud_1..3`, `mountain_range`
+
+### projectiles/fireball
+Two fireballs, each as `_full`, `_flame` (red) and `_core` (black spiral), so the core can spin
+inside the flame.
+
+### effects
+- `evil_cloud/`: two storm clouds, each as `_full`, `_cloud` and `_lightning` (to flash the bolts)
+- `rain/`: 6 raindrop shapes
+- `zigzag_1.png`, `zigzag_2.png`: the two small `S` / `Z` marks from the environment sheet
+  (could be a dash effect or sparks; rename once you decide)
+
+## Sizes
+The large photos were scaled down (whole drawing ≤ 1500 px; environment sheet to ⅓) so the files stay
+light. Parts of the same character share the same scale, so they still line up. Use the node
+`scale` in Godot to size things in your levels.
+
+## Re-cutting
+`tools/cut_sprites.py` and `tools/build_rigs.py` regenerate everything from `asset pack 1/`.
+Some of the cuts use coordinates measured on these exact drawings, so new drawings need new cut rules.

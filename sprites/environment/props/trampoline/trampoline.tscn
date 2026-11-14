@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://sprites/environment/props/trampoline/trampoline_1_stretched_high.png" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/environment/props/trampoline/trampoline_2_stretched.png" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/environment/props/trampoline/trampoline_3_rest.png" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/environment/props/trampoline/trampoline_4_squashed.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/environment/props/trampoline/trampoline_5_squashed_deep.png" id="5"]
+
+[sub_resource type="SpriteFrames" id="frames"]
+animations = [{"frames": [{"duration": 1.0, "texture": ExtResource("3")}, {"duration": 1.0, "texture": ExtResource("4")}, {"duration": 1.0, "texture": ExtResource("5")}, {"duration": 1.0, "texture": ExtResource("4")}, {"duration": 1.0, "texture": ExtResource("3")}, {"duration": 1.0, "texture": ExtResource("2")}, {"duration": 1.0, "texture": ExtResource("1")}, {"duration": 1.0, "texture": ExtResource("2")}, {"duration": 1.0, "texture": ExtResource("3")}], "loop": false, "name": &"bounce", "speed": 15.0}, {"frames": [{"duration": 1.0, "texture": ExtResource("3")}], "loop": true, "name": &"idle", "speed": 5.0}]
+
+[node name="Trampoline" type="AnimatedSprite2D"]
+sprite_frames = SubResource("frames")
+animation = &"idle"

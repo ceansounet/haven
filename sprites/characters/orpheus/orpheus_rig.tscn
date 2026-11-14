@@ -1,0 +1,72 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://sprites/characters/orpheus/orpheus_leg_back.png" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/characters/orpheus/orpheus_leg_front.png" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/characters/orpheus/orpheus_body.png" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/characters/orpheus/orpheus_tail.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/characters/orpheus/orpheus_arm_down.png" id="5"]
+[ext_resource type="Texture2D" path="res://sprites/characters/orpheus/orpheus_hand_1.png" id="6"]
+[ext_resource type="Texture2D" path="res://sprites/characters/orpheus/orpheus_hand_2.png" id="7"]
+[ext_resource type="Texture2D" path="res://sprites/characters/orpheus/orpheus_arm_raised.png" id="8"]
+[ext_resource type="Texture2D" path="res://sprites/characters/orpheus/eyes/orpheus_eyebrows_worried.png" id="9"]
+[ext_resource type="Texture2D" path="res://sprites/characters/orpheus/eyes/orpheus_eyes_happy.png" id="10"]
+[ext_resource type="Texture2D" path="res://sprites/characters/orpheus/mouths/orpheus_mouth_smile.png" id="11"]
+
+[node name="OrpheusRig" type="Node2D"]
+
+[node name="LegBack" type="Sprite2D" parent="."]
+position = Vector2(-90.0, -144.0)
+texture = ExtResource("1")
+offset = Vector2(-1.0, 56.5)
+
+[node name="LegFront" type="Sprite2D" parent="."]
+position = Vector2(65.0, -118.0)
+texture = ExtResource("2")
+offset = Vector2(0.0, 53.5)
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(0.0, -154.0)
+texture = ExtResource("3")
+offset = Vector2(1.5, -154.5)
+
+[node name="Tail" type="Sprite2D" parent="Body"]
+position = Vector2(-104.0, -55.0)
+texture = ExtResource("4")
+offset = Vector2(-27.5, -42.5)
+show_behind_parent = true
+
+[node name="ArmDown" type="Sprite2D" parent="Body"]
+position = Vector2(110.0, -185.0)
+texture = ExtResource("5")
+offset = Vector2(10.0, 46.0)
+
+[node name="Hand1" type="Sprite2D" parent="Body"]
+position = Vector2(108.0, -48.0)
+texture = ExtResource("6")
+offset = Vector2(0.5, 20.0)
+
+[node name="Hand2" type="Sprite2D" parent="Body"]
+position = Vector2(137.0, -48.0)
+texture = ExtResource("7")
+offset = Vector2(0.5, 18.5)
+
+[node name="ArmRaised" type="Sprite2D" parent="Body"]
+position = Vector2(85.0, -225.0)
+texture = ExtResource("8")
+offset = Vector2(27.5, -29.0)
+
+[node name="Face" type="Node2D" parent="Body"]
+position = Vector2(10.0, -270.0)
+
+[node name="Eyebrows" type="Sprite2D" parent="Body/Face"]
+position = Vector2(-8.0, -36.0)
+texture = ExtResource("9")
+visible = false
+
+[node name="Eyes" type="Sprite2D" parent="Body/Face"]
+position = Vector2(-8.0, -18.0)
+texture = ExtResource("10")
+
+[node name="Mouth" type="Sprite2D" parent="Body/Face"]
+position = Vector2(20.0, 26.0)
+texture = ExtResource("11")

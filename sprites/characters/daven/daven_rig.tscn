@@ -1,0 +1,69 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://sprites/characters/daven/daven_body.png" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/characters/daven/daven_spikes.png" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/characters/daven/daven_arm_left.png" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/characters/daven/daven_arm_right.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/characters/daven/daven_foot_left.png" id="5"]
+[ext_resource type="Texture2D" path="res://sprites/characters/daven/daven_foot_right.png" id="6"]
+[ext_resource type="Texture2D" path="res://sprites/characters/daven/daven_eye_left.png" id="7"]
+[ext_resource type="Texture2D" path="res://sprites/characters/daven/daven_eye_right.png" id="8"]
+[ext_resource type="Texture2D" path="res://sprites/characters/daven/daven_cheek_left.png" id="9"]
+[ext_resource type="Texture2D" path="res://sprites/characters/daven/daven_cheek_right.png" id="10"]
+[ext_resource type="Texture2D" path="res://sprites/characters/daven/daven_mouth.png" id="11"]
+
+[node name="DavenRig" type="Node2D"]
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(0.0, -60.0)
+texture = ExtResource("1")
+offset = Vector2(14.9, -226.4)
+
+[node name="Spikes" type="Sprite2D" parent="Body"]
+position = Vector2(0.0, 0.0)
+texture = ExtResource("2")
+offset = Vector2(11.3, -349.3)
+show_behind_parent = true
+
+[node name="ArmLeft" type="Sprite2D" parent="Body"]
+position = Vector2(-312.5, -275.3)
+texture = ExtResource("3")
+offset = Vector2(-40.7, -7.3)
+
+[node name="ArmRight" type="Sprite2D" parent="Body"]
+position = Vector2(301.3, -267.9)
+texture = ExtResource("4")
+offset = Vector2(48.2, -27.7)
+
+[node name="FootLeft" type="Sprite2D" parent="Body"]
+position = Vector2(-260.4, 0.0)
+texture = ExtResource("5")
+offset = Vector2(-22.1, 37.0)
+
+[node name="FootRight" type="Sprite2D" parent="Body"]
+position = Vector2(167.4, 14.9)
+texture = ExtResource("6")
+offset = Vector2(32.6, 62.5)
+
+[node name="Face" type="Node2D" parent="Body"]
+position = Vector2(2.6, -218.0)
+
+[node name="EyeLeft" type="Sprite2D" parent="Body/Face"]
+position = Vector2(-124.4, -99.0)
+texture = ExtResource("7")
+
+[node name="EyeRight" type="Sprite2D" parent="Body/Face"]
+position = Vector2(136.2, -108.8)
+texture = ExtResource("8")
+
+[node name="CheekLeft" type="Sprite2D" parent="Body/Face"]
+position = Vector2(-198.1, -11.0)
+texture = ExtResource("9")
+
+[node name="CheekRight" type="Sprite2D" parent="Body/Face"]
+position = Vector2(141.2, -18.0)
+texture = ExtResource("10")
+
+[node name="Mouth" type="Sprite2D" parent="Body/Face"]
+position = Vector2(0.0, 0.0)
+texture = ExtResource("11")
