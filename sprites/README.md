@@ -1,11 +1,10 @@
 # Haven sprites
 
-Every drawing from `asset pack 1/` has been cut out with a transparent background, split into
+Every source drawing has been cut out with a transparent background, split into
 separate parts where that helps animation, and named `lowercase_with_underscores`.
 
-The untouched source drawings are kept in two places:
-- `asset pack 1/` (still used as the source)
-- `asset pack 1 - ORIGINAL BACKUP/`, a safety copy that Godot ignores (it contains a `.gdignore` file)
+The untouched source drawings are in `asset pack 1 - ORIGINAL BACKUP/`. Godot ignores that folder
+(it contains a `.gdignore` file), and older versions are also in the git history.
 
 ## Ready-made Godot scenes
 
@@ -39,7 +38,7 @@ spots. The face position is my best guess, so nudge the parts in the editor if n
 | `orpheus_leg_back.png`, `orpheus_leg_front.png` | legs |
 | `orpheus_tail.png` | tail |
 | `eyes/orpheus_eyes_happy.png` | `^ ^` |
-| `eyes/orpheus_eyes_weird.png` | the two small "P"-shaped weird eyes |
+| `eyes/orpheus_eyes_teary.png` | teary eyes (crying face) |
 | `eyes/orpheus_eyes_wavy.png` | `~ ~` |
 | `eyes/orpheus_eyebrows_angry.png` | `\ /` |
 | `eyes/orpheus_eyebrows_worried.png` | `/ \` |
@@ -67,15 +66,20 @@ Its body is outline only (no white fill), so the background shows through it.
   (`1_stretched_high` → `5_squashed_deep`)
 - `background/`: `cloud_1..3`, `mountain_range`
 
-### projectiles/fireball
-Two fireballs, each as `_full`, `_flame` (red) and `_core` (black spiral), so the core can spin
-inside the flame.
+### projectiles
+- `fireball/`: two fireballs, each as `_full`, `_flame` (red) and `_core` (black spiral), so the
+  core can spin inside the flame
+- `iceball/`: the same two balls with the flame recoloured to ice blue (`_full`, `_ice`, `_core`),
+  keeping the marker texture
 
-### effects
-- `evil_cloud/`: two storm clouds, each as `_full`, `_cloud` and `_lightning` (to flash the bolts)
+### effects/weather
+The storm that rolls in when arriving at the castle and lasts until Daven is beaten.
+- `thunder_cloud/`: two thunder clouds, each as `_full`, `_cloud` and `_lightning` (to flash the bolts)
+- `thunder/`: `thunder_1`, `thunder_2` (the small zigzag bolts)
 - `rain/`: 6 raindrop shapes
-- `zigzag_1.png`, `zigzag_2.png`: the two small `S` / `Z` marks from the environment sheet
-  (could be a dash effect or sparks; rename once you decide)
+
+### ui
+- `game_icon.png`
 
 ## Sizes
 The large photos were scaled down (whole drawing ≤ 1500 px; environment sheet to ⅓) so the files stay
@@ -83,5 +87,7 @@ light. Parts of the same character share the same scale, so they still line up. 
 `scale` in Godot to size things in your levels.
 
 ## Re-cutting
-`tools/cut_sprites.py` and `tools/build_rigs.py` regenerate everything from `asset pack 1/`.
+`tools/cut_sprites.py` and `tools/build_rigs.py` regenerate everything:
+`python tools/cut_sprites.py "asset pack 1 - ORIGINAL BACKUP" sprites`, then
+`python tools/build_rigs.py sprites/parts.json sprites`.
 Some of the cuts use coordinates measured on these exact drawings, so new drawings need new cut rules.

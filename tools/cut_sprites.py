@@ -1,6 +1,6 @@
 """Cut the Haven drawings into separate transparent sprites.
 
-Usage: python cut.py <asset pack dir> <output sprites dir>
+Usage: python cut_sprites.py <source drawings dir> <output sprites dir>
 Writes PNGs plus parts.json (positions/pivots used to build the Godot rigs).
 """
 import json
@@ -57,6 +57,20 @@ def split_bolts(ink, frac, minsize):
     sizes = ndimage.sum(core, lab, range(1, n + 1))
     core = core & np.isin(lab, 1 + np.nonzero(sizes > minsize * core.sum())[0])
     return ink & ndimage.binary_dilation(core, iterations=int(hw * 1.6))
+
+
+def to_ice(img, where):
+    """Recolour the red marker strokes to icy blue, keeping the marker texture."""
+    out = img.copy()
+    rgb = Image.fromarray(img[:, :, :3].round().astype(np.uint8), "RGB")
+    hsv = np.asarray(rgb.convert("HSV")).astype(np.int32)
+    delta = ((hsv[:, :, 0] + 128) % 256) - 128  # small signed wobble around red
+    hsv[:, :, 0] = (140 + delta // 2) % 256       # ~200 deg: ice blue
+    hsv[:, :, 1] = (hsv[:, :, 1] * 0.9).astype(np.int32)
+    hsv[:, :, 2] = np.minimum(255, hsv[:, :, 2] * 1.05).astype(np.int32)
+    blue = np.asarray(Image.fromarray(hsv.astype(np.uint8), "HSV").convert("RGB")).astype(np.float32)
+    out[:, :, :3][where] = blue[where]
+    return out
 
 
 def box(shape, x0, y0, x1, y1):
@@ -121,7 +135,7 @@ save(img, c[2], O + "orpheus_body.png", s, pivot=(170, 340))
 save(img, c[4], O + "orpheus_arm_raised.png", s, pivot=(255, 115))
 save(img, c[12], O + "orpheus_arm_down.png", s, pivot=(280, 155))
 save(img, c[16], O + "orpheus_tail.png", s, pivot=(66, 285))
-save(img, c[17] | c[18], O + "eyes/orpheus_eyes_weird.png", s)
+save(img, c[17] | c[18], O + "eyes/orpheus_eyes_teary.png", s)  # teary face
 save(img, c[19], O + "orpheus_leg_back.png", s, pivot=(80, 350))
 save(img, c[20], O + "orpheus_leg_front.png", s, pivot=(235, 376))
 
@@ -153,11 +167,11 @@ save(img, c[8], D + "daven_collectible_mouth.png", s)
 img, ink, s = load("environment.jpg")
 s = 1.0 / 3  # items are small on this sheet; a third keeps blocks ~110 px
 c = components(ink, 20, 0.0004)
-names = ["items/wand.png", "items/key.png", "effects/zigzag_1.png", "effects/zigzag_2.png",
+names = ["items/wand.png", "items/key.png", "effects/weather/thunder/thunder_1.png", "effects/weather/thunder/thunder_2.png",
          "blocks/block_mystery.png", "blocks/block_cracked.png", "blocks/block_brick.png",
          "blocks/block_plain.png", "buildings/house.png", "props/fence_gate.png"]
 for m, rel in zip(c, names):
-    save(img, m, "environment/" + rel if not rel.startswith("effects") else rel, s)
+    save(img, m, rel if rel.startswith("effects") else "environment/" + rel, s)
 
 # ---------------------------------------------------------------- clouds (3 clouds; inner strokes merged)
 img, ink, s = load("clouds.jpg")
@@ -172,7 +186,7 @@ c = components(ink, 10, 0.0004)
 order = [(1, "streak_long"), (0, "streak_curved"), (2, "dot"), (3, "streak_slanted"),
          (4, "drop_small"), (5, "drop_big")]
 for i, name in order:
-    save(img, c[i], f"effects/rain/raindrop_{name}.png", s)
+    save(img, c[i], f"effects/weather/rain/raindrop_{name}.png", s)
 
 # ---------------------------------------------------------------- trampoline: 5 frames, same canvas, feet aligned
 img, ink, s = load("trampoline.jpg")
@@ -209,6 +223,10 @@ for k, name in ((1, "fireball1.jpg"), (2, "fireball2.jpg")):
     save(img, keep, f"projectiles/fireball/fireball_{k}_full.png", s)
     save(img, flame, f"projectiles/fireball/fireball_{k}_flame.png", s)
     save(img, core, f"projectiles/fireball/fireball_{k}_core.png", s)
+    ice = to_ice(img, ndimage.binary_dilation(flame, iterations=4))
+    save(ice, keep, f"projectiles/iceball/iceball_{k}_full.png", s)
+    save(ice, flame, f"projectiles/iceball/iceball_{k}_ice.png", s)
+    save(ice, core, f"projectiles/iceball/iceball_{k}_core.png", s)
 
 # ---------------------------------------------------------------- evil clouds: thin cloud lines vs thick bolts
 for k, name in ((1, "evilcloud1.jpg"), (2, "evilcloud2.jpg")):
@@ -224,9 +242,9 @@ for k, name in ((1, "evilcloud1.jpg"), (2, "evilcloud2.jpg")):
         bolts |= ink & box(ink.shape, 295 * F, 180 * F, 355 * F, 365 * F)  # zigzag inside the cloud
         bolts |= ink & box(ink.shape, 0, 740 * F, 175 * F, 9999)  # thin tail of the left bolt
     cloud = ink & ~bolts
-    save(img, ink, f"effects/evil_cloud/evil_cloud_{k}_full.png", s)
-    save(img, cloud, f"effects/evil_cloud/evil_cloud_{k}_cloud.png", s)
-    save(img, bolts, f"effects/evil_cloud/evil_cloud_{k}_lightning.png", s)
+    save(img, ink, f"effects/weather/thunder_cloud/thunder_cloud_{k}_full.png", s)
+    save(img, cloud, f"effects/weather/thunder_cloud/thunder_cloud_{k}_cloud.png", s)
+    save(img, bolts, f"effects/weather/thunder_cloud/thunder_cloud_{k}_lightning.png", s)
 
 # ---------------------------------------------------------------- tree: foliage vs trunk (for swaying)
 img, ink, s = load("tree.jpg")
@@ -243,3 +261,7 @@ whole("castlecenter.jpg", "environment/castle/castle_center_wall.png")
 whole("mountainrange.jpg", "environment/background/mountain_range.png")
 
 (OUT / "parts.json").write_text(json.dumps(meta, indent=1))
+
+# ---------------------------------------------------------------- game icon (already clean)
+(OUT / "ui").mkdir(parents=True, exist_ok=True)
+Image.open(SRC / "game icon maybe.png").save(OUT / "ui" / "game_icon.png")

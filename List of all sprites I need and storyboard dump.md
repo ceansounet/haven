@@ -3,10 +3,11 @@ Game intro, POV from a person in class, looking at a whiteboard, he's eyes are a
 
 Stage 1 : Cutscene : Orpheus is living happily in his village, then evil daven comes in and throws fireballs everywhere on his village and kills everybody but him, his village is destroyed, and he swears to avenge his peers.
 
-Stage 2 : Training : Level to introduce all abilities one by one, and then a simple boss fight against a scarecrow, the old master rides on a cloud in the sky and give tips, at the end the player is gifted the old masters magic wand, that throws fire and ice balls.
+Stage 2 : Training : Level to introduce all abilities one by one, and then a simple boss fight against a scarecrow (when the scarecrow is beaten, the player gets a key), the old master rides on a cloud in the sky and give tips, at the end the player is gifted the old masters magic wand, that throws fire and ice balls.
 abilities : jump, double jump with the boots found in the mystery cube, dash, fire and alt fire with the wand,
 
 Stage 3 : travel to his castle : One or two scenes of travel, with simple traps and bad guys
+when arriving at the castle, a thunder cloud comes in with rain and thunder. the storm stays during the whole boss battle.
 
 Stage 4 : Boss fight : Orph enters the castle, little cutscene to reveal the arena and then the player waits a bit, before evil daven rises from the ground, making the scene tremble.
 Orph can attack with his magic wand.
@@ -18,6 +19,7 @@ you start rising in the air and floating, but then the master comes in and tells
 the camera focuses on you, and zooms in, you close your eyes... and then the camera unzooms and you are floating with an aura around you.
 daven says  "what's that, I didn't sign for this !" and starts running away. before he can run away you send a powerful orb towards him, freezing him in place and time.
 you then sacrifice yourself, by exploding with a powerful blast, destroying him forever.
+once daven is beaten, the thunder cloud, the rain and the thunder go away.
 the end
  
 # Sprites :
