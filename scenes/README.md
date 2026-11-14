@@ -44,3 +44,6 @@ whiteboard stays still on screen and the level scrolls across it.
 - **Quit game** closes the game. The **settings wheel** only prints a message for now (no settings screen yet).
 - Anything placed on the board stays on the board during the zoom: the board's centre is always
   at the camera's position.
+
+## Guides
+- [Making the Stage 1 village cutscene](../docs/stage_1_village_cutscene_guide.md): step-by-step, for someone new to Godot.

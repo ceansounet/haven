@@ -127,3 +127,7 @@ light. Parts of the same character share the same scale, so they still line up. 
 `python tools/cut_sprites.py "source drawings/asset pack 1" sprites`, then
 `python tools/build_rigs.py sprites/parts.json sprites`.
 Some of the cuts use coordinates measured on these exact drawings, so new drawings need new cut rules.
+
+## Placeholders
+Every sprite that is still missing has a magenta placeholder in `placeholders/`. The full list is in
+[placeholders/PLACEHOLDERS.md](placeholders/PLACEHOLDERS.md).
