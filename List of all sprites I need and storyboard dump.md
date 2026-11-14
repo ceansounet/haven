@@ -1,4 +1,6 @@
 # Story :
+Game intro, POV from a person in class, looking at a whiteboard, he's eyes are almost closing and he yawns, puts his head in his arms, then he raises his head and looks at the board. the content on it has changed, from math to a game menu : new game, continue (grayed out when no save available), and quit game
+
 Stage 1 : Cutscene : Orpheus is living happily in his village, then evil daven comes in and throws fireballs everywhere on his village and kills everybody but him, his village is destroyed, and he swears to avenge his peers.
 
 Stage 2 : Training : Level to introduce all abilities one by one, and then a simple boss fight against a scarecrow, the old master rides on a cloud in the sky and give tips, at the end the player is gifted the old masters magic wand, that throws fire and ice balls.
