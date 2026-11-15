@@ -30,9 +30,9 @@ Also drawn (not in the story yet): a handwritten alphabet, one picture per lette
 |Village houses|♻️ duplicates of `house.png`|
 |Fence|✅ `fence\_gate`|
 |Villagers (Orpheus's peers)|♻️ duplicates of Orpheus|
-|Ground|✅ `environment/ground\_line.png` · 🟪 the placeholder is still used in `stage\_1\_village.tscn`: swap it for the drawing|
-|Destroyed / burning house|✅ `house\_broken\_full` (or the two pieces `house\_broken\_wall` + `house\_broken\_roof`) · 🟪 the placeholder is still used in `stage\_1\_village.tscn`: swap it for the drawing|
-|Fire on the ground (flames, smoke)|✅ `effects/fire/fire.tscn` (flickering, 2 drawings) + `effects/smoke/smoke.tscn` (rising wisps) · 🟪 the placeholder is still used in `stage\_1\_village.tscn`: swap it for the drawing|
+|Ground|✅ `environment/ground\_line.png`|
+|Destroyed / burning house|✅ `house\_broken\_full` (or the two pieces `house\_broken\_wall` + `house\_broken\_roof`)|
+|Fire on the ground (flames, smoke)|✅ `effects/fire/fire.tscn` (flickering, 2 drawings) + `effects/smoke/smoke.tscn` (rising wisps)|
 |Orpheus crying, swearing revenge|✅ teary eyes + frown, angry eyebrows|
 |Sky / background|✅ clouds, mountains|
 

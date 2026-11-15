@@ -18,10 +18,6 @@ MAGENTA = (214, 0, 160)
 
 # (folder, name, width, height, shape, what it is / where it goes)
 ITEMS = [
-    ("stage_1", "ground", 1920, 60, "rect", "Stage 1: village ground (a few marker lines) -- DRAWN NOW: swap to sprites/environment/ground_line.png"),
-    ("stage_1", "house_destroyed", 485, 610, "rect", "Stage 1: destroyed / burning house (same size as house.png at scale 2.5) -- DRAWN NOW: swap to sprites/environment/buildings/house_broken_full.png"),
-    ("stage_1", "fire", 220, 260, "ellipse", "Stage 1: fire on the ground -- DRAWN NOW: swap to sprites/effects/fire/fire.tscn"),
-    ("stage_1", "smoke", 260, 260, "ellipse", "Stage 1: smoke -- DRAWN NOW: swap to sprites/effects/smoke/smoke.tscn"),
     ("stage_3", "enemy", 260, 300, "rect", "Stage 3: bad guy"),
     ("stage_4", "arena_background", 1920, 1164, "rect", "Stage 4: castle arena (inside walls), fills the board"),
     ("stage_4", "ground_cracks", 700, 160, "rect", "Stage 4: cracks when Daven rises"),

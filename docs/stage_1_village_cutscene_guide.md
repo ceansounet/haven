@@ -1,5 +1,9 @@
 # Making the Stage 1 cutscene: the village is destroyed
 
+> **Note:** the finished cutscene is now built in `scenes/cutscenes/stage_1_village.tscn` (see
+> `scenes/README.md`). This guide stays as a step-by-step explanation of how such a cutscene is
+> made, which is useful for the next ones (the arena reveal, the ending…).
+
 A step-by-step guide that assumes you've never used Godot. Follow it in order; every number given
 (positions, sizes, times) is a starting point you can change afterwards.
 

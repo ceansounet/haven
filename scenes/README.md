@@ -47,3 +47,30 @@ whiteboard stays still on screen and the level scrolls across it.
 
 ## Guides
 - [Making the Stage 1 village cutscene](../docs/stage_1_village_cutscene_guide.md): step-by-step, for someone new to Godot.
+
+## Stage 1 cutscene (`cutscenes/stage_1_village.tscn`)
+Built on your village layout. Everything is driven by one animation, **cutscene** (AnimationPlayer,
+plays by itself, 25 s). Enter or Space skips it. At the end it opens stage 2.
+
+| Time | What happens |
+|---|---|
+| 0 → 3 s | Orpheus and his 5 mates hang around (each mate idles on its own) |
+| 3 → 7 s | the ground rumbles and giant Daven rises behind the mountains; at 4 s everyone looks scared |
+| 8 → 12 s | 6 fireballs fall from the sky, one per house: House3 at 8.0 s, House5 at 8.8, House1 at 9.6, House6 at 10.4, House2 at 11.2, House4 at 12.0 |
+| on each hit | **HouseN** disappears and **HouseBroken…N** appears, **FireN** lights up, **SmokeN** starts, **MateN** dies (falls and fades), and the screen jolts |
+| 13.5 → 16.5 s | Daven sinks back behind the mountains |
+| 17 → 20 s | Orpheus looks left and right, then turns sad (teary eyes, frown, arm down) |
+| 25 s | `go_to_training()` opens stage 2 |
+
+**Numbers match:** House N ↔ HouseBroken…N ↔ Fire N ↔ Smoke N ↔ Fireball N ↔ Mate N. House 1 has no
+mate. Your fires and smokes were renamed to match: Fire3 → Fire5, Fire2 → Fire3, Fire → Fire2,
+Smoke → Smoke3, Smoke2 → Smoke5, Smoke3 → Smoke2. Fire/Smoke 1, 4 and 6 are new.
+
+**Villagers** (`sprites/characters/orpheus/villager.tscn`) are Orpheus look-alikes with their own
+animations (idle, die, look_around, sad). The cutscene calls `set_mood("scared")`, `die()` and
+`look_around()` on them. Orpheus himself is one too.
+
+**Changing it:** select the AnimationPlayer and drag keys left or right in the Animation panel to
+change the timing. Move houses, mates and fires in the viewport as usual. The fireball tracks fly
+to each house's position, so if you move a house, update the last key of its `FireballN:position`
+track.

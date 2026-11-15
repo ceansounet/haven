@@ -1,149 +1,677 @@
 [gd_scene format=3 uid="uid://bcokdu12bfffg"]
 
-[ext_resource type="PackedScene" path="res://scenes/common/board_camera.tscn" id="1"]
-[ext_resource type="Texture2D" uid="uid://c3y7es37qmkga" path="res://sprites/environment/background/mountain_range.png" id="2_08yth"]
-[ext_resource type="Texture2D" uid="uid://bcrbus5dacl23" path="res://sprites/environment/background/cloud_1.png" id="3_gy5cq"]
-[ext_resource type="Texture2D" uid="uid://crtsoy1d7qey1" path="res://sprites/environment/background/cloud_2.png" id="4_0lix5"]
-[ext_resource type="Texture2D" uid="uid://bpu6cq658wrc" path="res://sprites/placeholders/stage_1/placeholder_ground.png" id="5_750k0"]
-[ext_resource type="Texture2D" uid="uid://tougckaxbkfd" path="res://sprites/environment/props/tree/tree_full.png" id="6_y44ld"]
-[ext_resource type="Texture2D" uid="uid://dbjpt71yp1xvs" path="res://sprites/environment/buildings/house.png" id="7_3cytm"]
-[ext_resource type="Texture2D" uid="uid://c767l7fmeo5ok" path="res://sprites/placeholders/stage_1/placeholder_house_destroyed.png" id="8_ovicg"]
-[ext_resource type="PackedScene" path="res://sprites/characters/evil_daven/evil_daven.tscn" id="9_gy5cq"]
-[ext_resource type="PackedScene" uid="uid://wgagtong2qql" path="res://sprites/characters/orpheus/orpheus_rig.tscn" id="9_ygcmn"]
-[ext_resource type="Texture2D" uid="uid://cemfrng1uyvcu" path="res://sprites/placeholders/stage_1/placeholder_smoke.png" id="11_750k0"]
-[ext_resource type="Texture2D" uid="uid://dn8wbnawn41cg" path="res://sprites/placeholders/stage_1/placeholder_fire.png" id="12_y44ld"]
+[ext_resource type="Script" path="res://scenes/cutscenes/stage_1_village.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/common/board_camera.tscn" id="2_camera"]
+[ext_resource type="PackedScene" path="res://sprites/environment/background/mountains_with_giant_daven.tscn" id="3_mountains"]
+[ext_resource type="Texture2D" uid="uid://bcrbus5dacl23" path="res://sprites/environment/background/cloud_1.png" id="4_cloud1"]
+[ext_resource type="Texture2D" uid="uid://crtsoy1d7qey1" path="res://sprites/environment/background/cloud_2.png" id="5_cloud2"]
+[ext_resource type="Texture2D" uid="uid://cy2clicbv6anq" path="res://sprites/environment/ground_line.png" id="6_ground"]
+[ext_resource type="Texture2D" uid="uid://tougckaxbkfd" path="res://sprites/environment/props/tree/tree_full.png" id="7_tree"]
+[ext_resource type="Texture2D" uid="uid://dbjpt71yp1xvs" path="res://sprites/environment/buildings/house.png" id="8_house"]
+[ext_resource type="Texture2D" uid="uid://b305ke5n81gpj" path="res://sprites/environment/buildings/house_broken_full.png" id="9_broken_full"]
+[ext_resource type="Texture2D" uid="uid://nifu7kpqre0x" path="res://sprites/environment/buildings/house_broken_roof.png" id="10_broken_roof"]
+[ext_resource type="PackedScene" path="res://sprites/characters/orpheus/villager.tscn" id="11_villager"]
+[ext_resource type="PackedScene" path="res://sprites/effects/fire/fire.tscn" id="12_fire"]
+[ext_resource type="PackedScene" path="res://sprites/effects/smoke/smoke.tscn" id="13_smoke"]
+[ext_resource type="Texture2D" path="res://sprites/projectiles/fireball/fireball_1_full.png" id="14_fireball1"]
+[ext_resource type="Texture2D" path="res://sprites/projectiles/fireball/fireball_2_full.png" id="15_fireball2"]
+[ext_resource type="Texture2D" path="res://sprites/characters/evil_daven/mouths/evil_daven_mouth_teeth.png" id="16_teeth"]
+[ext_resource type="Texture2D" path="res://sprites/characters/evil_daven/mouths/evil_daven_mouth_frown.png" id="17_frown"]
 
-[node name="Stage1Village" type="Node2D" unique_id=1637719451]
+[sub_resource type="Animation" id="Animation_cutscene"]
+resource_name = "cutscene"
+length = 25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/Mountains/SkyMask/UndoScale/GiantDaven:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {"times": PackedFloat32Array(0), "transitions": PackedFloat32Array(1), "update": 1, "values": [Vector2(0.6, 0.6)]}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/Mountains/SkyMask/UndoScale/GiantDaven:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {"times": PackedFloat32Array(0, 3, 7, 13.5, 16.5), "transitions": PackedFloat32Array(1, 0.5, 1, 2, 1), "update": 0, "values": [Vector2(0, 900), Vector2(0, 900), Vector2(0, 170), Vector2(0, 170), Vector2(0, 900)]}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background/Mountains/SkyMask/UndoScale/GiantDaven/Body/Face/Mouth:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {"times": PackedFloat32Array(0, 7, 13), "transitions": PackedFloat32Array(1, 1, 1), "update": 1, "values": [ExtResource("17_frown"), ExtResource("16_teeth"), ExtResource("17_frown")]}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background/Mountains/SkyMask/UndoScale/GiantDaven/Body/ArmLeft:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {"times": PackedFloat32Array(0, 7, 7.3, 7.65, 8, 8.35, 8.7, 9.05, 9.4, 9.75, 10.1, 10.45, 10.8, 11.15, 11.5, 11.85, 12.2, 12.55, 13.1), "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "update": 0, "values": [0.0, 0.0, 0.4, -0.2, 0.4, -0.2, 0.4, -0.2, 0.4, -0.2, 0.4, -0.2, 0.4, -0.2, 0.4, -0.2, 0.4, -0.2, 0.0]}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Background/Mountains/SkyMask/UndoScale/GiantDaven/Body/ArmRight:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {"times": PackedFloat32Array(0, 7, 7.3, 7.65, 8, 8.35, 8.7, 9.05, 9.4, 9.75, 10.1, 10.45, 10.8, 11.15, 11.5, 11.85, 12.2, 12.55, 13.1), "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "update": 0, "values": [0.0, 0.0, -0.4, 0.2, -0.4, 0.2, -0.4, 0.2, -0.4, 0.2, -0.4, 0.2, -0.4, 0.2, -0.4, 0.2, -0.4, 0.2, 0.0]}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Background:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {"times": PackedFloat32Array(0, 3, 3.1, 3.22, 3.34, 3.46, 3.58, 3.7, 3.82, 3.94, 4.06, 4.18, 4.3, 4.42, 4.54, 4.66, 4.78, 4.9, 5.02, 5.14, 5.26, 5.38, 5.5, 5.62, 5.74, 5.86, 5.98, 6.1, 6.22, 6.34, 6.46, 6.58, 6.7, 6.82, 6.94, 7.05, 8, 8.05, 8.1, 8.18, 8.8, 8.85, 8.9, 8.98, 9.6, 9.65, 9.7, 9.78, 10.4, 10.45, 10.5, 10.58, 11.2, 11.25, 11.3, 11.38, 12, 12.05, 12.1, 12.18), "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "update": 0, "values": [Vector2(0, 0), Vector2(0, 0), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0)]}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("village:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {"times": PackedFloat32Array(0, 3, 3.1, 3.22, 3.34, 3.46, 3.58, 3.7, 3.82, 3.94, 4.06, 4.18, 4.3, 4.42, 4.54, 4.66, 4.78, 4.9, 5.02, 5.14, 5.26, 5.38, 5.5, 5.62, 5.74, 5.86, 5.98, 6.1, 6.22, 6.34, 6.46, 6.58, 6.7, 6.82, 6.94, 7.05, 8, 8.05, 8.1, 8.18, 8.8, 8.85, 8.9, 8.98, 9.6, 9.65, 9.7, 9.78, 10.4, 10.45, 10.5, 10.58, 11.2, 11.25, 11.3, 11.38, 12, 12.05, 12.1, 12.18), "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "update": 0, "values": [Vector2(0, 0), Vector2(0, 0), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0)]}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("characters:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {"times": PackedFloat32Array(0, 3, 3.1, 3.22, 3.34, 3.46, 3.58, 3.7, 3.82, 3.94, 4.06, 4.18, 4.3, 4.42, 4.54, 4.66, 4.78, 4.9, 5.02, 5.14, 5.26, 5.38, 5.5, 5.62, 5.74, 5.86, 5.98, 6.1, 6.22, 6.34, 6.46, 6.58, 6.7, 6.82, 6.94, 7.05, 8, 8.05, 8.1, 8.18, 8.8, 8.85, 8.9, 8.98, 9.6, 9.65, 9.7, 9.78, 10.4, 10.45, 10.5, 10.58, 11.2, 11.25, 11.3, 11.38, 12, 12.05, 12.1, 12.18), "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "update": 0, "values": [Vector2(0, 0), Vector2(0, 0), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0)]}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("effects:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {"times": PackedFloat32Array(0, 3, 3.1, 3.22, 3.34, 3.46, 3.58, 3.7, 3.82, 3.94, 4.06, 4.18, 4.3, 4.42, 4.54, 4.66, 4.78, 4.9, 5.02, 5.14, 5.26, 5.38, 5.5, 5.62, 5.74, 5.86, 5.98, 6.1, 6.22, 6.34, 6.46, 6.58, 6.7, 6.82, 6.94, 7.05, 8, 8.05, 8.1, 8.18, 8.8, 8.85, 8.9, 8.98, 9.6, 9.65, 9.7, 9.78, 10.4, 10.45, 10.5, 10.58, 11.2, 11.25, 11.3, 11.38, 12, 12.05, 12.1, 12.18), "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "update": 0, "values": [Vector2(0, 0), Vector2(0, 0), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(-5, -3), Vector2(5, 3), Vector2(-5, 3), Vector2(5, -3), Vector2(-5, 3), Vector2(5, 3), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0), Vector2(0, 0), Vector2(14, -8), Vector2(-10, 6), Vector2(0, 0)]}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("village/House3:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {"times": PackedFloat32Array(0, 8), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [true, false]}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("village/HouseBrokenFull3:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {"times": PackedFloat32Array(0, 8), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("effects/Fire3:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {"times": PackedFloat32Array(0, 8), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("effects/Smoke3:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {"times": PackedFloat32Array(0, 8), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("effects/Fireball3:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {"times": PackedFloat32Array(0, 7.1, 8), "transitions": PackedFloat32Array(1, 1, 1), "update": 1, "values": [false, true, false]}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("effects/Fireball3:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {"times": PackedFloat32Array(0, 7.1, 8), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [Vector2(670, -914), Vector2(670, -914), Vector2(250, 236)]}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("effects/Fireball3:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {"times": PackedFloat32Array(0, 7.1, 8), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [0.0, 0.0, -12.0]}
+tracks/16/type = "method"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("characters/Mate3")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {"times": PackedFloat32Array(4, 8), "transitions": PackedFloat32Array(1, 1), "values": [{"args": ["scared"], "method": &"set_mood"}, {"args": [], "method": &"die"}]}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("village/House5:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {"times": PackedFloat32Array(0, 8.8), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [true, false]}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("village/HouseBrokenFull5:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {"times": PackedFloat32Array(0, 8.8), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("effects/Fire5:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {"times": PackedFloat32Array(0, 8.8), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("effects/Smoke5:emitting")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {"times": PackedFloat32Array(0, 8.8), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("effects/Fireball5:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {"times": PackedFloat32Array(0, 7.9, 8.8), "transitions": PackedFloat32Array(1, 1, 1), "update": 1, "values": [false, true, false]}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("effects/Fireball5:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {"times": PackedFloat32Array(0, 7.9, 8.8), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [Vector2(1213, -862), Vector2(1213, -862), Vector2(793, 288)]}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("effects/Fireball5:rotation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {"times": PackedFloat32Array(0, 7.9, 8.8), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [0.0, 0.0, -12.0]}
+tracks/24/type = "method"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("characters/Mate5")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {"times": PackedFloat32Array(4, 8.8), "transitions": PackedFloat32Array(1, 1), "values": [{"args": ["scared"], "method": &"set_mood"}, {"args": [], "method": &"die"}]}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("village/House1:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {"times": PackedFloat32Array(0, 9.6), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [true, false]}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("village/HouseBrokenFull1:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {"times": PackedFloat32Array(0, 9.6), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("effects/Fire1:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {"times": PackedFloat32Array(0, 9.6), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("effects/Smoke1:emitting")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {"times": PackedFloat32Array(0, 9.6), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("effects/Fireball1:visible")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {"times": PackedFloat32Array(0, 8.7, 9.6), "transitions": PackedFloat32Array(1, 1, 1), "update": 1, "values": [false, true, false]}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("effects/Fireball1:position")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {"times": PackedFloat32Array(0, 8.7, 9.6), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [Vector2(-249, -941), Vector2(-249, -941), Vector2(-669, 209)]}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("effects/Fireball1:rotation")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {"times": PackedFloat32Array(0, 8.7, 9.6), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [0.0, 0.0, -12.0]}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("village/House6:visible")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {"times": PackedFloat32Array(0, 10.4), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [true, false]}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("village/HouseBrokenFull6:visible")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {"times": PackedFloat32Array(0, 10.4), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("effects/Fire6:visible")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {"times": PackedFloat32Array(0, 10.4), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("effects/Smoke6:emitting")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {"times": PackedFloat32Array(0, 10.4), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("effects/Fireball6:visible")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {"times": PackedFloat32Array(0, 9.5, 10.4), "transitions": PackedFloat32Array(1, 1, 1), "update": 1, "values": [false, true, false]}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("effects/Fireball6:position")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {"times": PackedFloat32Array(0, 9.5, 10.4), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [Vector2(943, -915), Vector2(943, -915), Vector2(523, 235)]}
+tracks/38/type = "value"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("effects/Fireball6:rotation")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {"times": PackedFloat32Array(0, 9.5, 10.4), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [0.0, 0.0, -12.0]}
+tracks/39/type = "method"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("characters/Mate6")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {"times": PackedFloat32Array(4, 10.4), "transitions": PackedFloat32Array(1, 1), "values": [{"args": ["scared"], "method": &"set_mood"}, {"args": [], "method": &"die"}]}
+tracks/40/type = "value"
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/path = NodePath("village/House2:visible")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/keys = {"times": PackedFloat32Array(0, 11.2), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [true, false]}
+tracks/41/type = "value"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath("village/HouseBrokenFull2:visible")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {"times": PackedFloat32Array(0, 11.2), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/42/type = "value"
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/path = NodePath("effects/Fire2:visible")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/keys = {"times": PackedFloat32Array(0, 11.2), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/43/type = "value"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("effects/Smoke2:emitting")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {"times": PackedFloat32Array(0, 11.2), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/44/type = "value"
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/path = NodePath("effects/Fireball2:visible")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/keys = {"times": PackedFloat32Array(0, 10.3, 11.2), "transitions": PackedFloat32Array(1, 1, 1), "update": 1, "values": [false, true, false]}
+tracks/45/type = "value"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("effects/Fireball2:position")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {"times": PackedFloat32Array(0, 10.3, 11.2), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [Vector2(21, -864), Vector2(21, -864), Vector2(-399, 286)]}
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("effects/Fireball2:rotation")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {"times": PackedFloat32Array(0, 10.3, 11.2), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [0.0, 0.0, -12.0]}
+tracks/47/type = "method"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("characters/Mate2")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {"times": PackedFloat32Array(4, 11.2), "transitions": PackedFloat32Array(1, 1), "values": [{"args": ["scared"], "method": &"set_mood"}, {"args": [], "method": &"die"}]}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("village/House4:visible")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {"times": PackedFloat32Array(0, 12), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [true, false]}
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("village/HouseBrokenRoof4:visible")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {"times": PackedFloat32Array(0, 12), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/50/type = "value"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("effects/Fire4:visible")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {"times": PackedFloat32Array(0, 12), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/51/type = "value"
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/path = NodePath("effects/Smoke4:emitting")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {"times": PackedFloat32Array(0, 12), "transitions": PackedFloat32Array(1, 1), "update": 1, "values": [false, true]}
+tracks/52/type = "value"
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/path = NodePath("effects/Fireball4:visible")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/keys = {"times": PackedFloat32Array(0, 11.1, 12), "transitions": PackedFloat32Array(1, 1, 1), "update": 1, "values": [false, true, false]}
+tracks/53/type = "value"
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/path = NodePath("effects/Fireball4:position")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/keys = {"times": PackedFloat32Array(0, 11.1, 12), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [Vector2(-409, -800), Vector2(-409, -800), Vector2(-829, 350)]}
+tracks/54/type = "value"
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/path = NodePath("effects/Fireball4:rotation")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/keys = {"times": PackedFloat32Array(0, 11.1, 12), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [0.0, 0.0, -12.0]}
+tracks/55/type = "method"
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/path = NodePath("characters/Mate4")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/keys = {"times": PackedFloat32Array(4, 12), "transitions": PackedFloat32Array(1, 1), "values": [{"args": ["scared"], "method": &"set_mood"}, {"args": [], "method": &"die"}]}
+tracks/56/type = "method"
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/path = NodePath("characters/Orpheus")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/keys = {"times": PackedFloat32Array(4, 17), "transitions": PackedFloat32Array(1, 1), "values": [{"args": ["scared"], "method": &"set_mood"}, {"args": [], "method": &"look_around"}]}
+tracks/57/type = "method"
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/path = NodePath(".")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/keys = {"times": PackedFloat32Array(25), "transitions": PackedFloat32Array(1), "values": [{"args": [], "method": &"go_to_training"}]}
 
-[node name="BoardCamera" parent="." unique_id=920774239 instance=ExtResource("1")]
-offset = Vector2(-2, -40)
-zoom = Vector2(0.41725692, 0.41725692)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cutscene"]
+_data = {&"cutscene": SubResource("Animation_cutscene")}
 
-[node name="Background" type="Node2D" parent="." unique_id=200568483]
+[node name="Stage1Village" type="Node2D"]
+script = ExtResource("1_script")
 
-[node name="MountainRange" type="Sprite2D" parent="Background" unique_id=1910391202]
+[node name="BoardCamera" parent="." instance=ExtResource("2_camera")]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Mountains" parent="Background" instance=ExtResource("3_mountains")]
 position = Vector2(31, -98.75)
-scale = Vector2(1.1946404, 0.89047617)
-texture = ExtResource("2_08yth")
+scale = Vector2(1.19464, 0.890476)
 
-[node name="Cloud1" type="Sprite2D" parent="Background" unique_id=1861342544]
+[node name="Cloud1" type="Sprite2D" parent="Background"]
 position = Vector2(-437, -408)
-texture = ExtResource("3_gy5cq")
+texture = ExtResource("4_cloud1")
 
-[node name="Cloud2" type="Sprite2D" parent="Background" unique_id=1414679718]
+[node name="Cloud2" type="Sprite2D" parent="Background"]
 position = Vector2(555, -381)
-texture = ExtResource("4_0lix5")
+texture = ExtResource("5_cloud2")
 
-[node name="PlaceholderGround" type="Sprite2D" parent="Background" unique_id=1295544410]
-position = Vector2(0, 509)
-texture = ExtResource("5_750k0")
-
-[node name="TreeFull" type="Sprite2D" parent="Background" unique_id=756790398]
+[node name="TreeFull" type="Sprite2D" parent="Background"]
 position = Vector2(-59, 174)
-scale = Vector2(0.28966132, 0.2972789)
-texture = ExtResource("6_y44ld")
+scale = Vector2(0.289661, 0.297279)
+texture = ExtResource("7_tree")
 
-[node name="village" type="Node2D" parent="." unique_id=1466530722]
+[node name="GroundLine" type="Sprite2D" parent="Background"]
+position = Vector2(-18, 515)
+texture = ExtResource("6_ground")
 
-[node name="House2" type="Sprite2D" parent="village" unique_id=1398985142]
-position = Vector2(-399, 286)
-scale = Vector2(1.185567, 1.1885246)
-texture = ExtResource("7_3cytm")
+[node name="village" type="Node2D" parent="."]
 
-[node name="House" type="Sprite2D" parent="village" unique_id=1614048282]
+[node name="House1" type="Sprite2D" parent="village"]
 position = Vector2(-669, 209)
-texture = ExtResource("7_3cytm")
+texture = ExtResource("8_house")
 
-[node name="House3" type="Sprite2D" parent="village" unique_id=2089336076]
+[node name="House2" type="Sprite2D" parent="village"]
+position = Vector2(-399, 286)
+scale = Vector2(1.18557, 1.18852)
+texture = ExtResource("8_house")
+
+[node name="House3" type="Sprite2D" parent="village"]
 position = Vector2(250, 236)
-scale = Vector2(1.185567, 1.1885246)
-texture = ExtResource("7_3cytm")
+scale = Vector2(1.18557, 1.18852)
+texture = ExtResource("8_house")
 
-[node name="House4" type="Sprite2D" parent="village" unique_id=987355392]
+[node name="House4" type="Sprite2D" parent="village"]
 position = Vector2(-829, 350)
-texture = ExtResource("7_3cytm")
+texture = ExtResource("8_house")
 
-[node name="House5" type="Sprite2D" parent="village" unique_id=1041008829]
+[node name="House5" type="Sprite2D" parent="village"]
 position = Vector2(793, 288)
-scale = Vector2(1.185567, 1.1885246)
-texture = ExtResource("7_3cytm")
+scale = Vector2(1.18557, 1.18852)
+texture = ExtResource("8_house")
 
-[node name="House6" type="Sprite2D" parent="village" unique_id=496047334]
+[node name="House6" type="Sprite2D" parent="village"]
 position = Vector2(523, 235)
-scale = Vector2(1, 1.1967213)
-texture = ExtResource("7_3cytm")
+scale = Vector2(1, 1.19672)
+texture = ExtResource("8_house")
 
-[node name="PlaceholderHouseDestroyed" type="Sprite2D" parent="village" unique_id=1982341150]
+[node name="HouseBrokenFull1" type="Sprite2D" parent="village"]
 visible = false
-position = Vector2(-829.75, 353.5)
-scale = Vector2(0.4113402, 0.39836067)
-texture = ExtResource("8_ovicg")
+position = Vector2(-680, 246)
+scale = Vector2(0.671642, 0.671642)
+texture = ExtResource("9_broken_full")
 
-[node name="PlaceholderHouseDestroyed2" type="Sprite2D" parent="village" unique_id=1902535333]
+[node name="HouseBrokenFull2" type="Sprite2D" parent="village"]
 visible = false
-position = Vector2(-402.375, 288.25)
-scale = Vector2(0.47164944, 0.4762295)
-texture = ExtResource("8_ovicg")
+position = Vector2(-407, 322)
+rotation = 3.1415927
+scale = Vector2(0.758, -0.877)
+texture = ExtResource("9_broken_full")
 
-[node name="PlaceholderHouseDestroyed3" type="Sprite2D" parent="village" unique_id=503020970]
+[node name="HouseBrokenFull3" type="Sprite2D" parent="village"]
 visible = false
-position = Vector2(250, 238.00003)
-scale = Vector2(0.47164944, 0.4762295)
-texture = ExtResource("8_ovicg")
+position = Vector2(180, 357)
+rotation = 3.1415927
+scale = Vector2(0.699856, -0.752306)
+texture = ExtResource("9_broken_full")
 
-[node name="PlaceholderHouseDestroyed4" type="Sprite2D" parent="village" unique_id=2045236921]
+[node name="HouseBrokenRoof4" type="Sprite2D" parent="village"]
 visible = false
-position = Vector2(791, 290)
-scale = Vector2(0.47164944, 0.4762295)
-texture = ExtResource("8_ovicg")
+position = Vector2(-687, 463)
+texture = ExtResource("10_broken_roof")
 
-[node name="PlaceholderHouseDestroyed5" type="Sprite2D" parent="village" unique_id=437031272]
+[node name="HouseBrokenFull5" type="Sprite2D" parent="village"]
 visible = false
-position = Vector2(522.8125, 233)
-scale = Vector2(0.39252573, 0.4762295)
-texture = ExtResource("8_ovicg")
+position = Vector2(735, 377)
+rotation = 3.1415927
+scale = Vector2(0.758, -0.877)
+texture = ExtResource("9_broken_full")
 
-[node name="PlaceholderHouseDestroyed6" type="Sprite2D" parent="village" unique_id=633520540]
+[node name="HouseBrokenFull6" type="Sprite2D" parent="village"]
 visible = false
-position = Vector2(-669.0001, 210.125)
-scale = Vector2(0.39252573, 0.39385244)
-texture = ExtResource("8_ovicg")
+position = Vector2(575, 289)
+scale = Vector2(0.671642, 0.671642)
+texture = ExtResource("9_broken_full")
 
-[node name="characters" type="Node2D" parent="." unique_id=579964868]
+[node name="characters" type="Node2D" parent="."]
 
-[node name="EvilDaven" parent="characters" unique_id=522665644 instance=ExtResource("9_gy5cq")]
-visible = false
-position = Vector2(-32, 830)
+[node name="Mate2" parent="characters" instance=ExtResource("11_villager")]
+position = Vector2(-260, 505)
+scale = Vector2(-0.5, 0.5)
+idle_phase = 0.45
 
-[node name="OrpheusRig" parent="characters" unique_id=650715936 instance=ExtResource("9_ygcmn")]
+[node name="Mate3" parent="characters" instance=ExtResource("11_villager")]
+position = Vector2(110, 505)
+scale = Vector2(0.5, 0.5)
+idle_phase = 0.7
+
+[node name="Mate4" parent="characters" instance=ExtResource("11_villager")]
+position = Vector2(-760, 505)
+scale = Vector2(0.5, 0.5)
+idle_phase = 0.1
+
+[node name="Mate5" parent="characters" instance=ExtResource("11_villager")]
+position = Vector2(690, 505)
+scale = Vector2(0.5, 0.5)
+idle_phase = 0.85
+
+[node name="Mate6" parent="characters" instance=ExtResource("11_villager")]
+position = Vector2(420, 505)
+scale = Vector2(-0.5, 0.5)
+idle_phase = 0.25
+
+[node name="Orpheus" parent="characters" instance=ExtResource("11_villager")]
 position = Vector2(-518, 490)
 scale = Vector2(0.6, 0.6)
+idle_phase = 0.55
 
-[node name="effects" type="Node2D" parent="." unique_id=152872358]
+[node name="effects" type="Node2D" parent="."]
+
+[node name="Fire1" parent="effects" instance=ExtResource("12_fire")]
 visible = false
+position = Vector2(-680, 300)
+scale = Vector2(0.8, 0.8)
 
-[node name="PlaceholderSmoke" type="Sprite2D" parent="effects" unique_id=1935387645]
-position = Vector2(302, -109)
-texture = ExtResource("11_750k0")
+[node name="Fire2" parent="effects" instance=ExtResource("12_fire")]
+visible = false
+position = Vector2(-401, 325)
 
-[node name="PlaceholderFire" type="Sprite2D" parent="effects" unique_id=234024851]
-position = Vector2(246, 198)
-texture = ExtResource("12_y44ld")
+[node name="Fire3" parent="effects" instance=ExtResource("12_fire")]
+visible = false
+position = Vector2(250, 334)
 
-[node name="PlaceholderSmoke2" type="Sprite2D" parent="effects" unique_id=155905626]
-position = Vector2(-453, -16)
-texture = ExtResource("11_750k0")
+[node name="Fire4" parent="effects" instance=ExtResource("12_fire")]
+visible = false
+position = Vector2(-720, 485)
+scale = Vector2(0.7, 0.7)
 
-[node name="PlaceholderFire2" type="Sprite2D" parent="effects" unique_id=1331339622]
-position = Vector2(-399, 211)
-texture = ExtResource("12_y44ld")
+[node name="Fire5" parent="effects" instance=ExtResource("12_fire")]
+visible = false
+position = Vector2(799, 399)
 
-[node name="PlaceholderSmoke3" type="Sprite2D" parent="effects" unique_id=457245308]
-position = Vector2(823, -6)
-texture = ExtResource("11_750k0")
+[node name="Fire6" parent="effects" instance=ExtResource("12_fire")]
+visible = false
+position = Vector2(575, 340)
+scale = Vector2(0.8, 0.8)
 
-[node name="PlaceholderFire3" type="Sprite2D" parent="effects" unique_id=915880769]
-position = Vector2(797, 251)
-texture = ExtResource("12_y44ld")
+[node name="Smoke1" parent="effects" instance=ExtResource("13_smoke")]
+position = Vector2(-680, 0)
+emitting = false
+spawn_every = 0.5
+rise = 300.0
+lifetime = 2.0
+wisp_scale = 0.45
 
-[editable path="characters/OrpheusRig"]
+[node name="Smoke2" parent="effects" instance=ExtResource("13_smoke")]
+position = Vector2(-444, 102)
+emitting = false
+spawn_every = 0.5
+rise = 300.0
+lifetime = 2.0
+wisp_scale = 0.45
+
+[node name="Smoke3" parent="effects" instance=ExtResource("13_smoke")]
+position = Vector2(286, 21)
+emitting = false
+spawn_every = 0.5
+rise = 300.0
+lifetime = 2.0
+wisp_scale = 0.45
+
+[node name="Smoke4" parent="effects" instance=ExtResource("13_smoke")]
+position = Vector2(-720, 200)
+emitting = false
+spawn_every = 0.5
+rise = 300.0
+lifetime = 2.0
+wisp_scale = 0.45
+
+[node name="Smoke5" parent="effects" instance=ExtResource("13_smoke")]
+position = Vector2(828, 119)
+emitting = false
+spawn_every = 0.5
+rise = 300.0
+lifetime = 2.0
+wisp_scale = 0.45
+
+[node name="Smoke6" parent="effects" instance=ExtResource("13_smoke")]
+position = Vector2(575, 40)
+emitting = false
+spawn_every = 0.5
+rise = 300.0
+lifetime = 2.0
+wisp_scale = 0.45
+
+[node name="Fireball1" type="Sprite2D" parent="effects"]
+visible = false
+position = Vector2(-249, -941)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("14_fireball1")
+
+[node name="Fireball2" type="Sprite2D" parent="effects"]
+visible = false
+position = Vector2(21, -864)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("15_fireball2")
+
+[node name="Fireball3" type="Sprite2D" parent="effects"]
+visible = false
+position = Vector2(670, -914)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("14_fireball1")
+
+[node name="Fireball4" type="Sprite2D" parent="effects"]
+visible = false
+position = Vector2(-409, -800)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("15_fireball2")
+
+[node name="Fireball5" type="Sprite2D" parent="effects"]
+visible = false
+position = Vector2(1213, -862)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("14_fireball1")
+
+[node name="Fireball6" type="Sprite2D" parent="effects"]
+visible = false
+position = Vector2(943, -915)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("15_fireball2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {&"": SubResource("AnimationLibrary_cutscene")}
+autoplay = &"cutscene"

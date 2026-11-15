@@ -1,0 +1,86 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://sprites/characters/orpheus/villager.gd" id="1"]
+[ext_resource type="PackedScene" path="res://sprites/characters/orpheus/orpheus_rig.tscn" id="2"]
+
+[sub_resource type="Animation" id="Animation_idle"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rig:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {"times": PackedFloat32Array(0, 1, 2), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rig/Body/ArmRaised:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2), "transitions": PackedFloat32Array(1, 1, 1, 1, 1), "update": 0, "values": [0.0, 0.35, 0.0, 0.35, 0.0]}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Rig/Body:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {"times": PackedFloat32Array(0, 1, 2), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [0.0, -0.03, 0.0]}
+
+[sub_resource type="Animation" id="Animation_die"]
+resource_name = "die"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rig:rotation")
+tracks/0/interp = 2
+tracks/0/keys = {"times": PackedFloat32Array(0, 0.35), "transitions": PackedFloat32Array(0.5, 1), "update": 0, "values": [0.0, -1.5]}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rig:modulate")
+tracks/1/interp = 1
+tracks/1/keys = {"times": PackedFloat32Array(0, 0.5, 1.4), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Rig/Body/ArmRaised:rotation")
+tracks/2/interp = 1
+tracks/2/keys = {"times": PackedFloat32Array(0, 0.3), "transitions": PackedFloat32Array(1, 1), "update": 0, "values": [0.0, -0.6]}
+
+[sub_resource type="Animation" id="Animation_look_around"]
+resource_name = "look_around"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rig:scale")
+tracks/0/interp = 1
+tracks/0/keys = {"times": PackedFloat32Array(0, 0.7, 1.5, 2.3), "transitions": PackedFloat32Array(1, 1, 1, 1), "update": 1, "values": [Vector2(1, 1), Vector2(-1, 1), Vector2(1, 1), Vector2(-1, 1)]}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rig:position")
+tracks/1/interp = 2
+tracks/1/keys = {"times": PackedFloat32Array(0, 0.35, 0.7, 1.1, 1.5, 1.9, 2.3, 3), "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1), "update": 0, "values": [Vector2(0, 0), Vector2(0, -12), Vector2(0, 0), Vector2(0, -12), Vector2(0, 0), Vector2(0, -12), Vector2(0, 0), Vector2(0, 0)]}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Rig/Body/ArmRaised:rotation")
+tracks/2/interp = 2
+tracks/2/keys = {"times": PackedFloat32Array(0, 3), "transitions": PackedFloat32Array(1, 1), "update": 0, "values": [0.0, 1.0]}
+
+[sub_resource type="Animation" id="Animation_sad"]
+resource_name = "sad"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rig/Body/ArmRaised:rotation")
+tracks/0/interp = 2
+tracks/0/keys = {"times": PackedFloat32Array(0), "transitions": PackedFloat32Array(1), "update": 0, "values": [2.0]}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rig/Body:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {"times": PackedFloat32Array(0, 1.5, 3), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [0.1, 0.13, 0.1]}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Rig:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {"times": PackedFloat32Array(0, 1.5, 3), "transitions": PackedFloat32Array(1, 1, 1), "update": 0, "values": [Vector2(0, 0), Vector2(0, 4), Vector2(0, 0)]}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1"]
+_data = {&"die": SubResource("Animation_die"), &"idle": SubResource("Animation_idle"), &"look_around": SubResource("Animation_look_around"), &"sad": SubResource("Animation_sad")}
+
+[node name="Villager" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Rig" parent="." instance=ExtResource("2")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {&"": SubResource("AnimationLibrary_1")}
