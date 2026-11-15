@@ -1,0 +1,44 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://sprites/characters/scarecrow/scarecrow_pole.png" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/characters/scarecrow/scarecrow_body.png" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/characters/scarecrow/scarecrow_arm_left.png" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/characters/scarecrow/scarecrow_arm_right.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/characters/scarecrow/scarecrow_head.png" id="5"]
+[ext_resource type="Texture2D" path="res://sprites/characters/scarecrow/scarecrow_hat.png" id="6"]
+
+[node name="Scarecrow" type="Node2D"]
+
+[node name="Pole" type="Sprite2D" parent="."]
+position = Vector2(-13.5, -96.9)
+texture = ExtResource("1")
+offset = Vector2(13.5, 45.9)
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(-13.5, -100.9)
+texture = ExtResource("2")
+offset = Vector2(18.8, -114.2)
+
+[node name="ArmLeft" type="Sprite2D" parent="Body"]
+position = Vector2(-78.0, -183.0)
+texture = ExtResource("3")
+offset = Vector2(-94.6, 0.5)
+show_behind_parent = true
+
+[node name="ArmRight" type="Sprite2D" parent="Body"]
+position = Vector2(70.0, -181.0)
+texture = ExtResource("4")
+offset = Vector2(124.9, 7.9)
+show_behind_parent = true
+
+[node name="Head" type="Sprite2D" parent="Body"]
+position = Vector2(-4.0, -227.0)
+texture = ExtResource("5")
+offset = Vector2(-3.4, -54.6)
+
+[node name="Hat" type="Sprite2D" parent="Body/Head"]
+position = Vector2(-3.4, -90.6)
+texture = ExtResource("6")
+offset = Vector2(0, -69.5)
+scale = Vector2(0.5, 0.5)
+

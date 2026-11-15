@@ -1,7 +1,149 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bcokdu12bfffg"]
 
 [ext_resource type="PackedScene" path="res://scenes/common/board_camera.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://c3y7es37qmkga" path="res://sprites/environment/background/mountain_range.png" id="2_08yth"]
+[ext_resource type="Texture2D" uid="uid://bcrbus5dacl23" path="res://sprites/environment/background/cloud_1.png" id="3_gy5cq"]
+[ext_resource type="Texture2D" uid="uid://crtsoy1d7qey1" path="res://sprites/environment/background/cloud_2.png" id="4_0lix5"]
+[ext_resource type="Texture2D" uid="uid://bpu6cq658wrc" path="res://sprites/placeholders/stage_1/placeholder_ground.png" id="5_750k0"]
+[ext_resource type="Texture2D" uid="uid://tougckaxbkfd" path="res://sprites/environment/props/tree/tree_full.png" id="6_y44ld"]
+[ext_resource type="Texture2D" uid="uid://dbjpt71yp1xvs" path="res://sprites/environment/buildings/house.png" id="7_3cytm"]
+[ext_resource type="Texture2D" uid="uid://c767l7fmeo5ok" path="res://sprites/placeholders/stage_1/placeholder_house_destroyed.png" id="8_ovicg"]
+[ext_resource type="PackedScene" path="res://sprites/characters/evil_daven/evil_daven.tscn" id="9_gy5cq"]
+[ext_resource type="PackedScene" uid="uid://wgagtong2qql" path="res://sprites/characters/orpheus/orpheus_rig.tscn" id="9_ygcmn"]
+[ext_resource type="Texture2D" uid="uid://cemfrng1uyvcu" path="res://sprites/placeholders/stage_1/placeholder_smoke.png" id="11_750k0"]
+[ext_resource type="Texture2D" uid="uid://dn8wbnawn41cg" path="res://sprites/placeholders/stage_1/placeholder_fire.png" id="12_y44ld"]
 
-[node name="Stage1Village" type="Node2D"]
+[node name="Stage1Village" type="Node2D" unique_id=1637719451]
 
-[node name="BoardCamera" parent="." instance=ExtResource("1")]
+[node name="BoardCamera" parent="." unique_id=920774239 instance=ExtResource("1")]
+offset = Vector2(-2, -40)
+zoom = Vector2(0.41725692, 0.41725692)
+
+[node name="Background" type="Node2D" parent="." unique_id=200568483]
+
+[node name="MountainRange" type="Sprite2D" parent="Background" unique_id=1910391202]
+position = Vector2(31, -98.75)
+scale = Vector2(1.1946404, 0.89047617)
+texture = ExtResource("2_08yth")
+
+[node name="Cloud1" type="Sprite2D" parent="Background" unique_id=1861342544]
+position = Vector2(-437, -408)
+texture = ExtResource("3_gy5cq")
+
+[node name="Cloud2" type="Sprite2D" parent="Background" unique_id=1414679718]
+position = Vector2(555, -381)
+texture = ExtResource("4_0lix5")
+
+[node name="PlaceholderGround" type="Sprite2D" parent="Background" unique_id=1295544410]
+position = Vector2(0, 509)
+texture = ExtResource("5_750k0")
+
+[node name="TreeFull" type="Sprite2D" parent="Background" unique_id=756790398]
+position = Vector2(-59, 174)
+scale = Vector2(0.28966132, 0.2972789)
+texture = ExtResource("6_y44ld")
+
+[node name="village" type="Node2D" parent="." unique_id=1466530722]
+
+[node name="House2" type="Sprite2D" parent="village" unique_id=1398985142]
+position = Vector2(-399, 286)
+scale = Vector2(1.185567, 1.1885246)
+texture = ExtResource("7_3cytm")
+
+[node name="House" type="Sprite2D" parent="village" unique_id=1614048282]
+position = Vector2(-669, 209)
+texture = ExtResource("7_3cytm")
+
+[node name="House3" type="Sprite2D" parent="village" unique_id=2089336076]
+position = Vector2(250, 236)
+scale = Vector2(1.185567, 1.1885246)
+texture = ExtResource("7_3cytm")
+
+[node name="House4" type="Sprite2D" parent="village" unique_id=987355392]
+position = Vector2(-829, 350)
+texture = ExtResource("7_3cytm")
+
+[node name="House5" type="Sprite2D" parent="village" unique_id=1041008829]
+position = Vector2(793, 288)
+scale = Vector2(1.185567, 1.1885246)
+texture = ExtResource("7_3cytm")
+
+[node name="House6" type="Sprite2D" parent="village" unique_id=496047334]
+position = Vector2(523, 235)
+scale = Vector2(1, 1.1967213)
+texture = ExtResource("7_3cytm")
+
+[node name="PlaceholderHouseDestroyed" type="Sprite2D" parent="village" unique_id=1982341150]
+visible = false
+position = Vector2(-829.75, 353.5)
+scale = Vector2(0.4113402, 0.39836067)
+texture = ExtResource("8_ovicg")
+
+[node name="PlaceholderHouseDestroyed2" type="Sprite2D" parent="village" unique_id=1902535333]
+visible = false
+position = Vector2(-402.375, 288.25)
+scale = Vector2(0.47164944, 0.4762295)
+texture = ExtResource("8_ovicg")
+
+[node name="PlaceholderHouseDestroyed3" type="Sprite2D" parent="village" unique_id=503020970]
+visible = false
+position = Vector2(250, 238.00003)
+scale = Vector2(0.47164944, 0.4762295)
+texture = ExtResource("8_ovicg")
+
+[node name="PlaceholderHouseDestroyed4" type="Sprite2D" parent="village" unique_id=2045236921]
+visible = false
+position = Vector2(791, 290)
+scale = Vector2(0.47164944, 0.4762295)
+texture = ExtResource("8_ovicg")
+
+[node name="PlaceholderHouseDestroyed5" type="Sprite2D" parent="village" unique_id=437031272]
+visible = false
+position = Vector2(522.8125, 233)
+scale = Vector2(0.39252573, 0.4762295)
+texture = ExtResource("8_ovicg")
+
+[node name="PlaceholderHouseDestroyed6" type="Sprite2D" parent="village" unique_id=633520540]
+visible = false
+position = Vector2(-669.0001, 210.125)
+scale = Vector2(0.39252573, 0.39385244)
+texture = ExtResource("8_ovicg")
+
+[node name="characters" type="Node2D" parent="." unique_id=579964868]
+
+[node name="EvilDaven" parent="characters" unique_id=522665644 instance=ExtResource("9_gy5cq")]
+visible = false
+position = Vector2(-32, 830)
+
+[node name="OrpheusRig" parent="characters" unique_id=650715936 instance=ExtResource("9_ygcmn")]
+position = Vector2(-518, 490)
+scale = Vector2(0.6, 0.6)
+
+[node name="effects" type="Node2D" parent="." unique_id=152872358]
+visible = false
+
+[node name="PlaceholderSmoke" type="Sprite2D" parent="effects" unique_id=1935387645]
+position = Vector2(302, -109)
+texture = ExtResource("11_750k0")
+
+[node name="PlaceholderFire" type="Sprite2D" parent="effects" unique_id=234024851]
+position = Vector2(246, 198)
+texture = ExtResource("12_y44ld")
+
+[node name="PlaceholderSmoke2" type="Sprite2D" parent="effects" unique_id=155905626]
+position = Vector2(-453, -16)
+texture = ExtResource("11_750k0")
+
+[node name="PlaceholderFire2" type="Sprite2D" parent="effects" unique_id=1331339622]
+position = Vector2(-399, 211)
+texture = ExtResource("12_y44ld")
+
+[node name="PlaceholderSmoke3" type="Sprite2D" parent="effects" unique_id=457245308]
+position = Vector2(823, -6)
+texture = ExtResource("11_750k0")
+
+[node name="PlaceholderFire3" type="Sprite2D" parent="effects" unique_id=915880769]
+position = Vector2(797, 251)
+texture = ExtResource("12_y44ld")
+
+[editable path="characters/OrpheusRig"]

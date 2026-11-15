@@ -131,3 +131,40 @@ Some of the cuts use coordinates measured on these exact drawings, so new drawin
 ## Placeholders
 Every sprite that is still missing has a magenta placeholder in `placeholders/`. The full list is in
 [placeholders/PLACEHOLDERS.md](placeholders/PLACEHOLDERS.md).
+
+## Asset pack 2
+
+Cut from `source drawings/asset pack 2/` by `tools/cut_asset_pack_2.py`, scenes built by
+`tools/build_pack2_scenes.py`.
+
+### Ready-made scenes
+| Scene | What it does |
+|---|---|
+| `characters/scarecrow/scarecrow.tscn` | the scarecrow boss in parts: pole, body, arms (rotate at the shoulder), head + hat |
+| `effects/fire/fire.tscn` | flickering fire; pick `fire_1` or `fire_2` with **Texture**. Its position is the bottom of the flames |
+| `effects/smoke/smoke.tscn` | rising smoke made of your 14 wisps; **Emitting** turns it on/off |
+| `effects/dash/dash.tscn` | dash speed lines: call `burst()` when dashing (plays once on its own when it appears); Scale x = -1 for a dash to the left |
+| `effects/aura/aura.tscn` | the aura, 2 frames looping |
+| `projectiles/power_orb/power_orb.tscn` | the power orb, 3 frames looping |
+| `effects/lava/lava.tscn` | lava flowing left to right (**Scroll Speed**) that can rise (**Rise Speed**, or `rise_to(y, seconds)`); its position is the lava surface |
+| `ui/boss_bar/boss_health_bar.tscn` | boss health bar: set **Value** from 0 (empty) to 100 (full) |
+| `environment/background/mountains_with_giant_daven.tscn` | the mountains with giant Evil Daven hidden behind them; animations **rise** and **sink** |
+
+### Pictures
+- `ui/buttons/`: New game, Continue, Settings, Quit game, Main menu, each with a red `_hover`
+  version, plus `button_continue_disabled` (grey). The main menu uses them.
+- `ui/settings_wheel.png` (+ `_hover`), used in the main menu
+- `ui/hearts/`: `heart_1`, `heart_2`, `heart_3` as drawn. `heart_empty_standin` is a faded grey
+  copy, because no empty heart was drawn.
+- `ui/speech/`: `speech_bubble_round`, `speech_bubble_long`, `speech_bubble_small`
+- `ui/text/`: `text_waaa` (+ every letter in `waaa_letters/`), `text_i_didnt_sign_for_this`
+- `ui/the_end/`: `the_end_text`, `the_end_frame`, `the_end_full`
+- `ui/alphabet/`: your handwritten alphabet, `letter_a` … `letter_z`
+- `environment/buildings/`: `house_broken_wall`, `house_broken_roof`, `house_broken_full`
+- `environment/traps/`: `spikes`, `circular_saw`
+- `environment/items/boots.png`, `environment/ground_line.png`
+- `effects/`: `ice_block` (recoloured blue), `jump_puff`, `fire/fire_1..2`, `smoke/smoke_wisp_01..14`,
+  `dash/dash_line_01..16`, `aura/aura_1..2`, `lava/lava_surface` + `lava_body` (both repeat seamlessly)
+- `projectiles/power_orb/power_orb_1..3`
+- `environment/background/mountain_range_sky_mask.png`: the sky above the mountain ridge, used
+  to hide giant Daven behind the mountains (made by `tools/make_mountain_mask.py`)

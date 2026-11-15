@@ -8,10 +8,10 @@ const ZOOM_TIME := 1.2
 
 @onready var camera: BoardCamera = $BoardCamera
 @onready var menu: Control = $Menu
-@onready var new_game_button: Button = $Menu/NewGame
-@onready var continue_button: Button = $Menu/Continue
-@onready var quit_button: Button = $Menu/Quit
-@onready var settings_button: Button = $Menu/Settings
+@onready var new_game_button: BaseButton = $Menu/NewGame
+@onready var continue_button: BaseButton = $Menu/Continue
+@onready var quit_button: BaseButton = $Menu/Quit
+@onready var settings_button: BaseButton = $Menu/Settings
 
 
 func _ready() -> void:

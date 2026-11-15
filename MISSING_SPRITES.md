@@ -6,100 +6,108 @@
 drawing is done. The full list of placeholder files is in `sprites/placeholders/PLACEHOLDERS.md`.
 Every ❌ below has one.
 
+Also drawn (not in the story yet): a handwritten alphabet, one picture per letter in `sprites/ui/alphabet/`.
+
 ## Main characters and objects (from the storyboard's sprite list)
-| Sprite | Status |
-|---|---|
-| Orpheus | ✅ body, arms, legs, tail, 5 eye/eyebrow sets (incl. teary), 6 mouths |
-| Boss evil Daven | ✅ redrawn from `Evil daven.png` in black + red marker, with arms, feet, spikes, pupils, 4 mouths and 2 eyebrow sets |
-| Daven collectible | ✅ body, spikes, arms, feet, eyes, cheeks, mouth |
-| Old master | ✅ old Orpheus with a beard, sitting cross-legged on his cloud (tail, head, beard, arms, legs, eyes, mouth) |
-| Tree | ✅ |
-| Trampoline | ✅ 5 animation frames |
-| Blocks | ✅ plain, brick, cracked, mystery |
-| Platforms / terrain | ♻️ built from the blocks |
-| Fireball | ✅ 2 versions |
-| Ice ball | ✅ 2 versions, made from the fireballs with the flame turned to ice |
+
+|Sprite|Status|
+|-|-|
+|Orpheus|✅ body, arms, legs, tail, 5 eye/eyebrow sets (incl. teary), 6 mouths|
+|Boss evil Daven|✅ redrawn from `Evil daven.png` in black + red marker, with arms, feet, spikes, pupils, 4 mouths and 2 eyebrow sets|
+|Daven collectible|✅ body, spikes, arms, feet, eyes, cheeks, mouth|
+|Old master|✅ old Orpheus with a beard, sitting cross-legged on his cloud (tail, head, beard, arms, legs, eyes, mouth)|
+|Tree|✅|
+|Trampoline|✅ 5 animation frames|
+|Blocks|✅ plain, brick, cracked, mystery|
+|Platforms / terrain|♻️ built from the blocks|
+|Fireball|✅ 2 versions|
+|Ice ball|✅ 2 versions, made from the fireballs with the flame turned to ice|
 
 ## Stage 1: village cutscene
-| Sprite | Status |
-|---|---|
-| Village houses | ♻️ duplicates of `house.png` |
-| Fence | ✅ `fence_gate` |
-| Villagers (Orpheus's peers) | ♻️ duplicates of Orpheus |
-| Ground | ❌ just a few lines of marker · 🟪 **placeholder:** `sprites/placeholders/stage_1/placeholder_ground.png` |
-| Destroyed / burning house | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_1/placeholder_house_destroyed.png` |
-| Fire on the ground (flames, smoke) | ❌ (♻️ the fireball flame could work for small fires) · 🟪 **placeholder:** `sprites/placeholders/stage_1/placeholder_fire.png`, `sprites/placeholders/stage_1/placeholder_smoke.png` |
-| Orpheus crying, swearing revenge | ✅ teary eyes + frown, angry eyebrows |
-| Sky / background | ✅ clouds, mountains |
+
+|Sprite|Status|
+|-|-|
+|Village houses|♻️ duplicates of `house.png`|
+|Fence|✅ `fence\_gate`|
+|Villagers (Orpheus's peers)|♻️ duplicates of Orpheus|
+|Ground|✅ `environment/ground\_line.png` · 🟪 the placeholder is still used in `stage\_1\_village.tscn`: swap it for the drawing|
+|Destroyed / burning house|✅ `house\_broken\_full` (or the two pieces `house\_broken\_wall` + `house\_broken\_roof`) · 🟪 the placeholder is still used in `stage\_1\_village.tscn`: swap it for the drawing|
+|Fire on the ground (flames, smoke)|✅ `effects/fire/fire.tscn` (flickering, 2 drawings) + `effects/smoke/smoke.tscn` (rising wisps) · 🟪 the placeholder is still used in `stage\_1\_village.tscn`: swap it for the drawing|
+|Orpheus crying, swearing revenge|✅ teary eyes + frown, angry eyebrows|
+|Sky / background|✅ clouds, mountains|
 
 ## Stage 2: training
-| Sprite | Status |
-|---|---|
-| Old master | ✅ |
-| Master's cloud | ✅ part of the old master scene |
-| Scarecrow (boss) | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_2/placeholder_scarecrow.png` |
-| Key (reward for beating the scarecrow) | ✅ |
-| Mystery cube | ✅ `block_mystery` |
-| Boots (double jump) | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_2/placeholder_boots.png` |
-| Magic wand | ✅ |
-| Fire ball / ice ball | ✅ |
-| Dash effect | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_2/placeholder_dash_effect.png` |
-| Jump / double-jump puff | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_2/placeholder_jump_puff.png` |
-| Tip speech bubble | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_2/placeholder_tip_speech_bubble.png` |
+
+|Sprite|Status|
+|-|-|
+|Old master|✅|
+|Master's cloud|✅ part of the old master scene|
+|Scarecrow (boss)|✅ `characters/scarecrow/scarecrow.tscn`: head, arms, body, pole + hat|
+|Key (reward for beating the scarecrow)|✅|
+|Mystery cube|✅ `block\_mystery`|
+|Boots (double jump)|✅ `environment/items/boots.png`|
+|Magic wand|✅|
+|Fire ball / ice ball|✅|
+|Dash effect|✅ `effects/dash/dash.tscn` (16 speed lines that shoot back and fade)|
+|Jump / double-jump puff|✅ `effects/jump\_puff.png`|
+|Tip speech bubble|✅ 3 bubbles in `ui/speech/`|
 
 ## Stage 3: travel to the castle
-| Sprite | Status |
-|---|---|
-| Traps (spikes, etc.) | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_3/placeholder_spike_trap.png` |
-| Bad guys / enemies | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_3/placeholder_enemy.png` |
-| Backgrounds | ✅ mountains, clouds, tree |
-| Castle from outside | ✅ tower, center wall, gate (portcullis) |
-| Storm on arrival: thunder cloud, rain, thunder | ✅ `thunder_cloud_1..2`, `raindrop_*`, `thunder_1..2` |
+
+|Sprite|Status|
+|-|-|
+|Traps (spikes, etc.)|✅ `environment/traps/spikes.png`, `environment/traps/circular\_saw.png`|
+|Bad guys / enemies|❌ · 🟪 **placeholder:** `sprites/placeholders/stage\_3/placeholder\_enemy.png`|
+|Backgrounds|✅ mountains, clouds, tree|
+|Castle from outside|✅ tower, center wall, gate (portcullis)|
+|Storm on arrival: thunder cloud, rain, thunder|✅ `thunder\_cloud\_1..2`, `raindrop\_\*`, `thunder\_1..2`|
 
 ## Stage 4: boss fight
-| Sprite | Status |
-|---|---|
-| Castle arena (inside walls / background) | ❌ (floor ♻️ blocks) · 🟪 **placeholder:** `sprites/placeholders/stage_4/placeholder_arena_background.png` |
-| Boss Daven | ✅ |
-| Daven rising from the ground (cracks / dust) | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_4/placeholder_ground_cracks.png`, `sprites/placeholders/stage_4/placeholder_dust.png` |
-| Daven's fireballs | ✅ |
-| Lava (rising) | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_4/placeholder_lava.png` |
-| Robots | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_4/placeholder_robot.png` |
-| Frozen robot / ice block effect | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_4/placeholder_ice_block.png` |
-| Small Daven running, arms flailing | ♻️ the Evil Daven rig scaled down, arms and feet animated |
-| Speech bubbles ("waaaa", "what's that, I didn't sign for this!") | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_4/placeholder_speech_bubble.png` |
-| Orpheus closed eyes | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_4/placeholder_orpheus_eyes_closed.png` |
-| Floating aura around Orpheus | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_4/placeholder_aura.png` |
-| Powerful orb | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_4/placeholder_orb.png` |
-| Daven frozen in place and time | ❌ (ice overlay or color tint) · 🟪 **placeholder:** `sprites/placeholders/stage_4/placeholder_daven_frozen.png` |
-| Final explosion / blast | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_4/placeholder_explosion.png` |
-| Storm during the fight (goes away when Daven is beaten) | ✅ same as stage 3 |
-| "The end" screen | ❌ · 🟪 **placeholder:** `sprites/placeholders/stage_4/placeholder_the_end.png` |
+
+|Sprite|Status|
+|-|-|
+|Castle arena (inside walls / background)|❌ (floor ♻️ blocks) · 🟪 **placeholder:** `sprites/placeholders/stage\_4/placeholder\_arena\_background.png`|
+|Boss Daven|✅|
+|Daven rising from the ground (cracks / dust)|❌ · 🟪 **placeholder:** `sprites/placeholders/stage\_4/placeholder\_ground\_cracks.png`, `sprites/placeholders/stage\_4/placeholder\_dust.png`|
+|Daven's fireballs|✅|
+|Lava (rising)|✅ `effects/lava/lava.tscn`: scrolls left to right, can rise|
+|Robots|❌ · 🟪 **placeholder:** `sprites/placeholders/stage\_4/placeholder\_robot.png`|
+|Frozen robot / ice block effect|✅ `effects/ice\_block.png` (recoloured blue)|
+|Small Daven running, arms flailing|♻️ the Evil Daven rig scaled down, arms and feet animated|
+|Speech bubbles ("waaaa", "what's that, I didn't sign for this!")|✅ bubbles in `ui/speech/`, texts `ui/text/text\_waaa.png` (+ each letter) and `ui/text/text\_i\_didnt\_sign\_for\_this.png`|
+|Orpheus closed eyes|❌ · 🟪 **placeholder:** `sprites/placeholders/stage\_4/placeholder\_orpheus\_eyes\_closed.png`|
+|Floating aura around Orpheus|✅ `effects/aura/aura.tscn` (2 frames)|
+|Powerful orb|✅ `projectiles/power\_orb/power\_orb.tscn` (3 frames)|
+|Daven frozen in place and time|❌ (ice overlay or color tint) · 🟪 **placeholder:** `sprites/placeholders/stage\_4/placeholder\_daven\_frozen.png`|
+|Final explosion / blast|❌ · 🟪 **placeholder:** `sprites/placeholders/stage\_4/placeholder\_explosion.png`|
+|Storm during the fight (goes away when Daven is beaten)|✅ same as stage 3|
+|"The end" screen|✅ `ui/the\_end/` (text, frame, both)|
 
 ## Menus and UI
-| Sprite | Status |
-|---|---|
-| "Main menu" button | ❌ · 🟪 **placeholder:** `sprites/placeholders/ui/placeholder_button_main_menu.png` |
-| "New game" button | ❌ · 🟪 **placeholder:** `sprites/placeholders/ui/placeholder_button_new_game.png` |
-| "Continue" button | ❌ (+ a grayed-out version for when there's no save) · 🟪 **placeholder:** `sprites/placeholders/ui/placeholder_button_continue.png`, `sprites/placeholders/ui/placeholder_button_continue_disabled.png` |
-| "Settings" button | ❌ · 🟪 **placeholder:** `sprites/placeholders/ui/placeholder_button_settings.png` |
-| "Quit game" button | ❌ · 🟪 **placeholder:** `sprites/placeholders/ui/placeholder_button_quit_game.png` |
-| Settings wheel (gear icon) | ❌ · 🟪 **placeholder:** `sprites/ui/placeholder_settings_wheel.png` (already used in the main menu) |
-| Player health: 3 hearts | ❌ (a full heart + an empty heart is enough) · 🟪 **placeholder:** `sprites/placeholders/ui/placeholder_heart_full.png`, `sprites/placeholders/ui/placeholder_heart_empty.png` |
-| Boss health bar | ❌ · 🟪 **placeholder:** `sprites/placeholders/ui/placeholder_boss_health_bar_frame.png`, `sprites/placeholders/ui/placeholder_boss_health_bar_fill.png` |
-| Game icon | ✅ `sprites/ui/game_icon.png` |
 
-⚠️ **Placeholders to replace:** the main menu (`scenes/menus/main_menu.tscn`) uses temporary buttons drawn by Godot (`placeholder_menu_theme.tres`) and a temporary gear icon. Once the drawings exist, swap them in (e.g. turn the buttons into `TextureButton`s) and delete the placeholders.
+|Sprite|Status|
+|-|-|
+|"Main menu" button|✅ `ui/buttons/button\_main\_menu.png` (+ red hover)|
+|"New game" button|✅ used in the main menu (+ red hover)|
+|"Continue" button|✅ used in the main menu (+ red hover, + grey when there's no save)|
+|"Settings" button|✅ `ui/buttons/button\_settings.png` (+ red hover)|
+|"Quit game" button|✅ used in the main menu (+ red hover)|
+|Settings wheel (gear icon)|✅ used in the main menu (+ red hover)|
+|Player health: 3 hearts|✅ 3 hearts in `ui/hearts/` · ❌ no empty heart drawn: `heart\_empty\_standin.png` is a faded copy standing in for it|
+|Boss health bar|✅ `ui/boss\_bar/boss\_health\_bar.tscn` (set its Value 0 to 100)|
+|Game icon|✅ `sprites/ui/game\_icon.png`|
+
 
 Tip: for buttons, draw a **normal**, **hover** and **pressed** version of each (or one blank
 button + the text drawn separately), so Godot's `TextureButton` can show them reacting.
 
 ## Game intro (to do last, waiting for a good whiteboard)
-| Sprite | Status |
-|---|---|
-| Classroom seen from a student's desk (POV) | ❌ · 🟪 **placeholder:** `sprites/placeholders/intro/placeholder_classroom_pov.png` |
-| Whiteboard (empty frame) | ❌ · 🟪 **placeholder:** `sprites/placeholders/intro/placeholder_whiteboard_frame.png` |
-| Math written on the board (before it changes) | ❌ · 🟪 **placeholder:** `sprites/placeholders/intro/placeholder_board_math.png` |
-| Desk + the student's arms (for putting the head down) | ❌ · 🟪 **placeholder:** `sprites/placeholders/intro/placeholder_desk_and_arms.png` |
-| Eyelids closing / blink overlay | ❌ · 🟪 **placeholder:** `sprites/placeholders/intro/placeholder_eyelid_top.png`, `sprites/placeholders/intro/placeholder_eyelid_bottom.png` |
-| Menu drawn on the whiteboard | ♻️ the menu buttons above |
+
+|Sprite|Status|
+|-|-|
+|Classroom seen from a student's desk (POV)|❌ · 🟪 **placeholder:** `sprites/placeholders/intro/placeholder\_classroom\_pov.png`|
+|Whiteboard (empty frame)|❌ · 🟪 **placeholder:** `sprites/placeholders/intro/placeholder\_whiteboard\_frame.png`|
+|Math written on the board (before it changes)|❌ · 🟪 **placeholder:** `sprites/placeholders/intro/placeholder\_board\_math.png`|
+|Desk + the student's arms (for putting the head down)|❌ · 🟪 **placeholder:** `sprites/placeholders/intro/placeholder\_desk\_and\_arms.png`|
+|Eyelids closing / blink overlay|❌ · 🟪 **placeholder:** `sprites/placeholders/intro/placeholder\_eyelid\_top.png`, `sprites/placeholders/intro/placeholder\_eyelid\_bottom.png`|
+|Menu drawn on the whiteboard|♻️ the menu buttons above|

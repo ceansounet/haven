@@ -1,6 +1,6 @@
-extends Button
-## Placeholder menu button: grows a little while the mouse is over it (colours come from
-## placeholder_menu_theme.tres). Replace with the drawn buttons later.
+extends BaseButton
+## Menu button: grows a little while the mouse is over it (the red hover picture is set on the
+## TextureButton itself).
 
 @export var hover_scale := 1.08
 

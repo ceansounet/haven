@@ -8,15 +8,15 @@ A step-by-step guide that assumes you've never used Godot. Follow it in order; e
 | Time | What happens |
 |---|---|
 | 0 → 5 s | A peaceful village: houses, a fence, a tree, mountains and clouds. Orpheus and three villagers stand around. |
-| 5 → 8 s | Evil Daven walks in from the right. |
-| 8 → 12.5 s | He throws three fireballs. Each one hits a house: the house is destroyed, a fire starts, and the villager next to it disappears. |
-| 13 → 16 s | Daven turns around and walks away. |
-| 16 → 19 s | Orpheus is alone: teary eyes, sad mouth. |
+| 5 → 9 s | Giant Evil Daven rises from behind the mountains (the mountains hide his lower half). |
+| 9 → 13 s | He throws three fireballs. Each one hits a house: the house is destroyed, a fire starts with smoke, and the villager next to it disappears. |
+| 13.5 → 16.5 s | Daven sinks back behind the mountains. |
+| 16.5 → 19 s | Orpheus is alone: teary eyes, sad mouth. |
 | 19 → 24 s | Angry eyebrows, and a speech bubble: "I will avenge you all!" |
 | 25 s | The game moves on to Stage 2 (training). |
 
-The things that aren't drawn yet (destroyed house, fire, ground, speech bubble) use the magenta
-**placeholders** from `sprites/placeholders/`. Later you just swap the picture (see the end).
+Everything used here is drawn now. (If you started with the magenta placeholders for the ground,
+destroyed house, fire or smoke, section 11 shows how to swap them for the drawings.)
 
 ---
 
@@ -97,10 +97,17 @@ Put these in **`Background`** (pictures are in `sprites/environment/background/`
 
 | Name | Picture | Position | Scale |
 |---|---|---|---|
-| Mountains | `mountain_range.png` | (0, 210) | (1.1, 1.1) |
 | Cloud1 | `cloud_1.png` | (-600, -450) | (0.7, 0.7) |
 | Cloud2 | `cloud_2.png` | (500, -500) | (0.6, 0.6) |
-| Ground | `sprites/placeholders/stage_1/placeholder_ground.png` | (0, 520) | (1.2, 1) |
+| Mountains | `mountains_with_giant_daven.tscn` (a **scene**, see below) | (0, 210) | (1.1, 1.1) |
+| Ground | `sprites/environment/ground_line.png` | (0, 505) | (1.1, 1) |
+
+**The mountains are a scene, not a picture**, because giant Daven lives inside them: drag
+`sprites/environment/background/mountains_with_giant_daven.tscn` into the viewport like a picture.
+It contains the mountain drawing, Daven hidden behind it, and two ready-made animations, **rise**
+and **sink**. (If you already placed `mountain_range.png`, delete it: select it and press
+**Delete**, then add this scene with the same Position and Scale.) Section 9.3 explains how the
+hiding works.
 
 ## 6. The village
 
@@ -119,9 +126,9 @@ the list:
 
 | Name | Picture | Position | Scale |
 |---|---|---|---|
-| HouseDestroyed1 | `sprites/placeholders/stage_1/placeholder_house_destroyed.png` | (-750, 305) | (0.64, 0.64) |
-| HouseDestroyed2 | (Ctrl+D) | (-150, 305) | (0.64, 0.64) |
-| HouseDestroyed3 | (Ctrl+D) | (550, 305) | (0.64, 0.64) |
+| HouseDestroyed1 | `buildings/house_broken_full.png` | (-750, 433) | (0.5, 0.5) |
+| HouseDestroyed2 | (Ctrl+D) | (-150, 433) | (0.5, 0.5) |
+| HouseDestroyed3 | (Ctrl+D) | (550, 433) | (0.5, 0.5) |
 
 To hide a node: select it, and in the Inspector open **CanvasItem → Visibility** and **untick
 Visible** (or click the **eye icon** next to its name in the Scene dock).
@@ -142,30 +149,35 @@ Put these in **`Characters`**:
 | Villager2 | (same scene) | (50, 500) | (0.5, 0.5) |
 | Villager3 | (same scene) | (760, 500) | (-0.5, 0.5) |
 | Orpheus | (same scene) | (-380, 500) | (0.6, 0.6) |
-| EvilDaven | `sprites/characters/evil_daven/evil_daven.tscn` | (1500, 500) | (0.4, 0.4) |
 
 Each character's position is the point **between its feet**, which is why they all have y = 500 (the ground).
-EvilDaven starts outside the board on the right, so he can walk in.
+(Evil Daven isn't added here: he's already inside the mountains scene.)
 
 **Seeing inside a character.** To change Orpheus's face later, you need to see his parts:
 
 1. Right-click **Orpheus** in the Scene dock.
 2. Tick **Editable Children**. His parts appear under him (`Body`, `Face`, `Eyes`, `Mouth`…).
-3. Do the same for **EvilDaven**.
 
 ## 8. Effects (hidden at the start)
 
 Put these in **`Effects`** and **hide them all** (untick Visible):
 
-| Name | Picture | Position | Scale |
+| Name | Picture / scene | Position | Scale |
 |---|---|---|---|
-| Fireball1 | `sprites/projectiles/fireball/fireball_1_full.png` | (720, 250) | (0.15, 0.15) |
-| Fireball2 | (Ctrl+D) | (720, 250) | (0.15, 0.15) |
-| Fireball3 | (Ctrl+D) | (720, 250) | (0.15, 0.15) |
-| Fire1 | `sprites/placeholders/stage_1/placeholder_fire.png` | (-750, 450) | (0.8, 0.8) |
-| Fire2 | (Ctrl+D) | (-150, 450) | (0.8, 0.8) |
-| Fire3 | (Ctrl+D) | (550, 450) | (0.8, 0.8) |
-| SpeechBubble | `sprites/placeholders/stage_4/placeholder_speech_bubble.png` | (-300, 60) | (0.8, 0.8) |
+| Fireball1 | `sprites/projectiles/fireball/fireball_1_full.png` | (270, -130) | (0.15, 0.15) |
+| Fireball2 | (Ctrl+D) | (270, -130) | (0.15, 0.15) |
+| Fireball3 | (Ctrl+D) | (270, -130) | (0.15, 0.15) |
+| Fire1 | `sprites/effects/fire/fire.tscn` (scene) | (-750, 470) | (0.6, 0.6) |
+| Fire2 | (Ctrl+D) | (-150, 470) | (0.6, 0.6) |
+| Fire3 | (Ctrl+D) | (550, 470) | (0.6, 0.6) |
+| Smoke1 | `sprites/effects/smoke/smoke.tscn` (scene) | (-750, 280) | (1, 1) |
+| Smoke2 | (Ctrl+D) | (-150, 280) | (1, 1) |
+| Smoke3 | (Ctrl+D) | (550, 280) | (1, 1) |
+| SpeechBubble | `sprites/ui/speech/speech_bubble_round.png` | (-300, 60) | (1, 1) |
+
+The fire flickers and the smoke rises by themselves while they're visible. A fire's position is
+the **bottom** of its flames. To use the other fire drawing, select the fire and drag `fire_2.png` onto
+**Texture** in the Inspector.
 
 **Text in the speech bubble:**
 
@@ -173,7 +185,7 @@ Put these in **`Effects`** and **hide them all** (untick Visible):
 2. In the Inspector, type in **Text**: `I will avenge you all!`
 3. Under **Theme Overrides → Colors**, tick **Font Color** and pick black.
 4. Under **Theme Overrides → Font Sizes**, tick **Font Size** and set `60`.
-5. Under **Layout → Transform**, set **Position** to (-280, -40) and **Size** to (560, 80).
+5. Under **Layout → Transform**, set **Position** to (-230, -90) and **Size** to (460, 80).
 6. Set **Horizontal Alignment** to **Center**.
 
 ## 9. The animation
@@ -208,28 +220,40 @@ the Inspector, or drag it left or right. To delete one, select it and press **De
 > ⚠️ The most common mistake: changing a value and **forgetting to click the key**. Then nothing is
 > recorded. Always click the key after changing something.
 
-### 9.3 Daven walks in (5 → 8 s)
+### 9.3 Giant Daven rises behind the mountains (5 → 9 s)
 
-- At **5.0**: select EvilDaven, Position (1500, 500) → **key**.
-- At **8.0**: Position (850, 500) → **key**.
+**How the hiding works.** The mountain drawing is only lines: its inside is see-through, so just
+putting Daven "behind" it wouldn't hide him. Instead, the mountains scene has an invisible shape
+called **SkyMask** that covers only the sky above the mountain ridge. Its **Clip Children** setting
+is on, which means anything placed inside it is only drawn where the shape is. Daven is inside it,
+so he only shows above the ridge, as if the mountains were in front of him. (`UndoScale` just keeps
+Daven from being stretched when the mountains are.)
 
-Press **F6** to try it: Daven slides in. To make him waddle, open EvilDaven's children and key
-`FootLeft` → Rotation: 0 at 5.0, 15 at 5.5, -15 at 6.0, 15 at 6.5… up to 8.0. Do the same on
-`FootRight` with opposite values.
+The rising is already animated inside that scene (**rise**: 4 s, **sink**: 3 s). Your cutscene only
+has to start them:
+
+1. Select your **AnimationPlayer**. In the Animation panel click **+ Add Track** → **Animation
+   Playback Track**, and pick **Mountains** → `AnimationPlayer` (the one inside the mountains;
+   tick **Editable Children** on Mountains first if you can't see it).
+2. Move the playhead to **5.0**, right-click on the new track → **Insert Key**, and choose **rise**.
+
+Press **F6**: at 5 s Daven comes up from behind the peaks. To change how high he comes up or how
+big he is: right-click Mountains → Editable Children, then edit `SkyMask/UndoScale/GiantDaven`
+(its Scale) or the **rise** animation inside `mountains_with_giant_daven.tscn`.
 
 ### 9.4 The three fireballs (8 → 12.5 s)
 
-Fireball 1 hits House3:
+Fireball 1 hits House3 (it starts at Daven's raised hand):
 
-- At **7.9**: Fireball1 → Visible **off** → key.
-- At **8.0**: Visible **on** → key. Position (720, 250) → key. Rotation 0 → key.
-- At **9.0**: Position (550, 305) → key. Rotation 720 → key (it spins twice). Visible **off** → key.
+- At **8.9**: Fireball1 → Visible **off** → key.
+- At **9.0**: Visible **on** → key. Position (270, -130) → key. Rotation 0 → key.
+- At **10.0**: Position (550, 305) → key. Rotation 720 → key (it spins twice). Visible **off** → key.
 
-When it hits, at **9.0**, add keys for the house, the fire and the villager:
+When it hits, at **10.0**, add keys for the house, the fire, the smoke and the villager:
 
 - House3: Visible **off** → key.
 - HouseDestroyed3: Visible **on** → key. Also add a key at **0.0** with Visible **off**.
-- Fire3: Visible **on** → key. Also add a key at **0.0** with Visible **off**.
+- Fire3 and Smoke3: Visible **on** → key. Also add keys at **0.0** with Visible **off**.
 - Villager3: Visible **off** → key. Also add a key at **0.0** with Visible **on**.
 
 > Why the keys at 0.0? So that when the animation starts again, everything goes back to how it
@@ -237,21 +261,19 @@ When it hits, at **9.0**, add keys for the house, the fire and the villager:
 
 Do the same with:
 
-- **Fireball2** from **9.5 to 10.5**, ending at (-150, 305), destroying **House2** / **Villager2**.
-- **Fireball3** from **11.0 to 12.5**, ending at (-750, 305), destroying **House1** / **Villager1**.
+- **Fireball2** from **10.5 to 11.5**, ending at (-150, 305), destroying **House2** / **Villager2**.
+- **Fireball3** from **12.0 to 13.0**, ending at (-750, 305), destroying **House1** / **Villager1**.
 
 For a bigger hit, add a little shake: put `Background` and `Village` (and `Characters`) inside one
-more group called `World`. Key World's Position at 9.0: (0, 0), 9.05: (15, -10), 9.1: (-12, 8),
-9.2: (0, 0). Copy the same keys around 10.5 and 12.5. Don't shake the camera itself: the camera
+more group called `World`. Key World's Position at 10.0: (0, 0), 10.05: (15, -10), 10.1: (-12, 8),
+10.2: (0, 0). Copy the same keys around 11.5 and 13.0. Don't shake the camera itself: the camera
 carries the classroom picture.
 
-### 9.5 Daven leaves (13 → 16 s)
+### 9.5 Daven sinks back down (13.5 → 16.5 s)
 
-- At **13.0**: EvilDaven Scale (0.4, 0.4) → key. Position (850, 500) → key.
-- At **13.2**: Scale (-0.4, 0.4) → key (he turns around).
-- At **16.0**: Position (1600, 500) → key.
+On the **Animation Playback Track** from 9.3, right-click at **13.5** → **Insert Key** → **sink**.
 
-### 9.6 Orpheus is sad, then angry (16 → 24 s)
+### 9.6 Orpheus is sad, then angry (16.5 → 24 s)
 
 Open Orpheus's children (Editable Children, step 7): `Orpheus/Body/Face/Eyes`, `Mouth` and `Eyebrows`.
 
@@ -259,7 +281,7 @@ To key a **picture change**: select `Eyes`, then drag a picture from the FileSys
 **Texture** box in the Inspector, then click the key next to Texture.
 
 - At **0.0**: Eyes texture `orpheus_eyes_happy.png` → key. Mouth texture `orpheus_mouth_smile.png` → key.
-- At **16.0**: Eyes `sprites/characters/orpheus/eyes/orpheus_eyes_teary.png` → key.
+- At **16.5**: Eyes `sprites/characters/orpheus/eyes/orpheus_eyes_teary.png` → key.
   Mouth `.../mouths/orpheus_mouth_frown.png` → key.
 - At **0.0**: Eyebrows Visible **off** → key.
 - At **19.0**: Eyebrows Texture `orpheus_eyebrows_angry.png` → key, Visible **on** → key.
@@ -313,11 +335,27 @@ the cutscene plays, then Stage 2 opens (still empty for now). **Enter** skips th
 | Everything is upside down or mirrored | A Scale is negative by mistake. |
 | The red errors at the bottom talk about a path | A file was moved or renamed: drag the picture into the Texture box again. |
 
-## 11. Replacing the placeholders later
+## 11. Swapping placeholders for drawings
 
-When the real drawing exists (for example the destroyed house):
+If your scene still uses magenta placeholders, here's how to swap each one.
 
-1. Save it in the right `sprites/` folder (for example `sprites/environment/buildings/house_destroyed.png`).
-2. Click each node that uses the placeholder (HouseDestroyed1, 2, 3) and drag the new picture onto
-   its **Texture** in the Inspector. Adjust **Scale** if the size is different.
-3. Remove its row from `sprites/placeholders/PLACEHOLDERS.md` and update `MISSING_SPRITES.md`.
+**A picture for a picture** (ground, destroyed houses):
+
+1. Click the node (for example `PlaceholderGround`, or each `HouseDestroyed`).
+2. Drag the drawing from the FileSystem dock onto its **Texture** in the Inspector:
+   - ground → `sprites/environment/ground_line.png` (Position (0, 505), Scale (1.1, 1))
+   - destroyed house → `sprites/environment/buildings/house_broken_full.png` (Scale (0.5, 0.5),
+     Position y 433)
+3. Rename the node if you like (F2). Its animation keys keep working.
+
+**A picture for an animated scene** (fire, smoke): these drawings are animated scenes, so the old
+node has to be replaced:
+
+1. Note the old node's **name** and **Position**, then select it and press **Delete**.
+2. With `Effects` selected, drag `sprites/effects/fire/fire.tscn` (or `smoke/smoke.tscn`) into the
+   viewport, give it the **same name** and Position. Scale (0.6, 0.6) for fire.
+3. Animation keys belong to a node name: if the name is the same, the old Visible keys work again.
+   If the Animation panel shows a red track, delete it and add the Visible keys again.
+
+When nothing uses a placeholder any more, delete its file in `sprites/placeholders/` and its row
+in `sprites/placeholders/PLACEHOLDERS.md`.
